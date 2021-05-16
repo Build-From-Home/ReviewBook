@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import express from "express";
 import exhbs from "express-handlebars";
+import { admin } from "./controllers/admin.js";
 
 const STATIC_PATH = "assets";
 const app = express();
@@ -18,13 +19,11 @@ app.use(`/${STATIC_PATH}`, express.static('assets'));
 
 
 export const home = app.get("/", async (req, res) => {
-    try {
-        return res.render('home')
-    }
-    catch (err) {
-        console.log(JSON.stringify(err))
-    }
+    return res.render('home')
 });
+
+app.use('/admin', admin);
+
 
 app.listen(process.env.PORT, () => {
     console.log(`Listening to Port Number:${process.env.PORT}` + " " + `http://localhost:${process.env.PORT}`)
