@@ -15,6 +15,8 @@ app.use(express.json())
 
 app.use(`/${STATIC_PATH}`, express.static('assets'));
 
+
+
 export const home = app.get("/", async (req, res) => {
     try {
         return res.render('home')
