@@ -7,7 +7,8 @@ const booksSchema = mongoose.Schema({
     // language: String,
     // coverImage: String,
     // description: String,
-    // linkToPurchase: [String],
+    // linkToFlipkart: String,
+    // linkToAmazon:
     // yearOfPublication: String,
     // genre: String
 

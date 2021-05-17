@@ -1,10 +1,10 @@
 import dotenv from "dotenv";
 import express from "express";
 import exhbs from "express-handlebars";
-import { admin } from "./controllers/admin.js";
 import mongoose from 'mongoose';
-import booksCollection from "./models/booksCollection.js";
 import fileUpload from 'express-fileupload'
+import { authController } from "./controllers/authController.js";
+import { pageRendering } from "./controllers/pageRendering.js";
 
 
 const STATIC_PATH = "assets";
@@ -35,21 +35,13 @@ mongoose.connect(connectionUrl, {
     .catch((err) => {
         console.log(err)
     })
-booksCollection.find((err, data) => {
-    if (err) {
-        console.log(err)
-    }
-    else {
-        console.log(data)
-    }
-})
 export const home = app.get("/", async (req, res) => {
-    return res.render('home')
+    return res.render('guest')
 });
 
 
-app.use('/admin', admin);
-
+app.use('/auth', authController);
+app.use('/pages', pageRendering)
 
 app.listen(process.env.PORT, () => {
     console.log(`Listening to Port Number:${process.env.PORT}` + " " + `http://localhost:${process.env.PORT}`)
