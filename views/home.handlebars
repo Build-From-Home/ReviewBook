@@ -53,9 +53,10 @@
                             </div>
             
                             <div class="book-content">
-            
-                                <h2>The Seat Filler</h2>
-                                <h4>by Sariah Wilson</h4>
+                                {{#each data}}
+                                <h2>The Seat Filler{{this.bookTitle}}</h2>
+                                {{/each}}
+                                <h4>by Sariah Wilson </h4>
                                 <select name="" id="">
                                     <option value="">Want to read</option>
                                 </select>

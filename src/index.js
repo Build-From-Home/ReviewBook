@@ -35,16 +35,16 @@ mongoose.connect(connectionUrl, {
     .catch((err) => {
         console.log(err)
     })
-booksCollection.find((err, data) => {
-    if (err) {
-        console.log(err)
-    }
-    else {
-        console.log(data)
-    }
-})
 export const home = app.get("/", async (req, res) => {
-    return res.render('home')
+    booksCollection.find((err, data) => {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            return res.render('home',{data})
+        }
+      })
+    
 });
 
 
