@@ -3,7 +3,8 @@ import { authenticationMiddleware } from './authController.js';
 const router = express.Router();
 
 export const landingPage = router.get('/landing', authenticationMiddleware, (req, res) => {
-    const { user_id, name, email } = req.query
+    const { user_id, name, email, jwtToken } = req.query
+    res.locals.JWTTOKEN = jwtToken
     return res.render('authpages/landing', { user_id, name, email })
 })
 export const guestPage = router.get('/guest', (req, res) => {
