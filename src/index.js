@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import fileUpload from 'express-fileupload'
 import { authController } from "./controllers/authController.js";
 import { pageRendering } from "./controllers/pageRendering.js";
+import { frontendApi } from "./controllers/frontendApi.js";
 
 
 const STATIC_PATH = "assets";
@@ -36,13 +37,17 @@ mongoose.connect(connectionUrl, {
         console.log(err)
     })
 export const home = app.get("/", async (req, res) => {
+    
     return res.render('guest')
 });
 
 
 app.use('/auth', authController);
-app.use('/pages', pageRendering)
+app.use('/pages', pageRendering);
+app.use('/api',frontendApi);
 
 app.listen(process.env.PORT, () => {
     console.log(`Listening to Port Number:${process.env.PORT}` + " " + `http://localhost:${process.env.PORT}`)
 })
+
+
