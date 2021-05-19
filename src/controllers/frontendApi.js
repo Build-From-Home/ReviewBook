@@ -1,5 +1,6 @@
 import express from 'express';
 const router = express.Router();
+import booksCollection from '../models/booksCollection.js'
 
 export const bookApi = router.get('/booksapi', async (req,res)=>{
     booksCollection.find((err, data) => {
@@ -8,7 +9,7 @@ export const bookApi = router.get('/booksapi', async (req,res)=>{
             console.log(err)
         }
         else {
-            return res.data = data
+            return res.json({booksData:data})
         }
       })
 })

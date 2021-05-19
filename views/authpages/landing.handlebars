@@ -71,26 +71,26 @@
                        
                     </div>
                 </div>
-                <div class="updates">
+                <div id="main" class="updates">
                     <h4>UPDATES</h4>
-                    {{#each data}}
-                    <div class="content">
+                   
+                    <div id="contentData" v-for="data in booksData" class="content">
                         <p>Trending this week in one of your favorite genres,</p>
-                        <a href="">{{this.genre}}</a>
+                        <a href="">${data.genre}</a>
                     
                        
                         <div class="book-details">
                     
                             <div class="book-img">
-                                <img src="{{this.coverImage}}"
+                                <img v-bind:src="require(${data.coverImage})"
                                     alt="">
                             </div>
                     
                             <div class="book-content">
                                 
-                                <h2>{{this.bookTitle}}</h2>
+                                <h2>${data.bookTitle},${data.coverImage}</h2>
                                 
-                                <h4>by {{this.authorName}}</h4>
+                                <h4>by ${data.authorName}</h4>
                                 <select name="" id="book-content-dropdown">
                                     <option value="">Want to read</option>
                                 </select>
@@ -98,7 +98,7 @@
                                     <p>Rate it:</p><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i
                                         class="far fa-star"></i><i class="far fa-star"></i>
                                 </div>
-                                <p style="margin-top: 3px;" class="more">{{this.description}}</p>
+                                <p style="margin-top: 3px;" class="more">${data.description}</p>
                     
                             </div>
                     
@@ -117,7 +117,7 @@
                         </div>
                         
                     </div>
-                    {{/each}}
+                  
 
                     <div class="content">
                         <p>Trending this week in one of your favorite genres,</p>
@@ -277,14 +277,37 @@
             
     </script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios@0.19.2/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
     <script>
-        var data
-        axios.get('http://localhost:8080/api/booksapi')
-        .then((res)=>{
-            data = res.data
-            console.log(data)
+        var app = new Vue({
+            el:'#main',
+            data:{
+                booksData:[],
+            },
+            delimiters: ['${', '}'],
         })
 
     </script>
 
+    <script>
+        axios.get('http://localhost:8080/api/booksapi')
+        .then((res)=>{
+            app.booksData = res.data.booksData
+            console.log(app.booksData)
+            //const contentData = document.getElementById("contentData")
+            //datas.forEach((data)=>{
+              //  document.createElement('p').innerHTML = 'Trending this week in one of your favorite genres,';
+                //contentData.appendChild('p').innerHTML=
+                //contentData.appendChild('a').innerHTML=data.genre;
+               // const pd = contentData.appendChild('div').className='book-details';
+               // pd.appendChild()
+            })
+        .catch((err)=>{
+            console.log(err)
+        })
+            
+           
+        
 
+    </script>
+    
