@@ -6,324 +6,188 @@
   font-family: "Montserrat", sans-serif;
   color: black;
 }
-
-/* BASIC SETUP */
-
-.page-wrapper {
+body {
   width: 100%;
-  height: auto;
-}
-
-.nav-wrapper {
-  width: 100%;
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
-  top: 0;
-  background-color: rgb(223, 217, 191);
-  border-bottom: solid 1px rgb(151, 122, 98);
-}
-
-.grad-bar {
-  width: 100%;
-  height: 5px;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  -webkit-animation: gradbar 15s ease infinite;
-  -moz-animation: gradbar 15s ease infinite;
-  animation: gradbar 15s ease infinite;
-}
-
-/* NAVIGATION */
-
-.navbar {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  align-items: center;
-  height: 50px;
   overflow: hidden;
 }
 
-.navbar img {
-  height: 16px;
-  width: auto;
-  justify-self: start;
-  margin-left: 20px;
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: rgb(175, 159, 134);
+  overflow: hidden;
 }
 
-.navbar ul {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  justify-self: end;
-}
-
-.nav-item a {
-  color: #000;
-  font-size: 0.9rem;
-  font-weight: 400;
-  text-decoration: none;
-  transition: color 0.3s ease-out;
-}
-
-.nav-item a:hover {
-  color: #3498db;
-}
-
-/* SECTIONS */
-
-.headline {
-  width: 100%;
-  height: 50vh;
-  min-height: 350px;
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)),
-    url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/jPLiQ-9/mountains-background-for-titles-intro-projects-and-etc_ew22rur3l__F0000.png");
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.features {
-  width: 100%;
-  height: auto;
-  background-color: #f1f1f1;
-  display: flex;
-  padding: 50px 20px;
-  justify-content: space-around;
-}
-
-.feature-container {
-  flex-basis: 30%;
-  margin-top: 10px;
-}
-
-.feature-container p {
-  color: #000;
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
   text-align: center;
-  line-height: 1.4;
-  margin-bottom: 15px;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
 }
 
-.feature-container img {
-  width: 100%;
-  margin-bottom: 15px;
+/* Add an active class to highlight the current page */
+.active {
+  background-color: #04aa6d;
+  color: white;
 }
 
-/* SEARCH FUNCTION */
-
-#search-icon {
-  font-size: 0.9rem;
-  margin-top: 3px;
-  margin-left: 15px;
-  transition: color 0.3s ease-out;
-}
-
-#search-icon:hover {
-  color: #3498db;
-  cursor: pointer;
-}
-
-.search {
-  transform: translate(-35%);
-  -webkit-transform: translate(-35%);
-  transition: transform 0.7s ease-in-out;
-  color: #3498db;
-}
-
-.no-search {
-  transform: translate(0);
-  transition: transform 0.7s ease-in-out;
-}
-
-.search-input {
-  position: absolute;
-  top: -4px;
-  right: -125px;
-  opacity: 0;
-  z-index: -1;
-  transition: opacity 0.6s ease;
-}
-
-.search-active {
-  opacity: 1;
-  z-index: 0;
-}
-
-input {
-  border: 0;
-  border-left: 1px solid #ccc;
-  border-radius: 0; /* FOR SAFARI */
-  outline: 0;
-  padding: 5px;
-}
-
-/* MOBILE MENU & ANIMATION */
-
-.menu-toggle .bar {
-  width: 25px;
-  height: 3px;
-  background-color: #3f3f3f;
-  margin: 5px auto;
-  -webkit-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-.menu-toggle {
-  justify-self: end;
-  margin-right: 25px;
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
   display: none;
 }
 
-.menu-toggle:hover {
-  cursor: pointer;
+/* Dropdown container - needed to position the dropdown content */
+.dropdown {
+  float: left;
+  overflow: hidden;
 }
 
-#mobile-menu.is-active .bar:nth-child(2) {
-  opacity: 0;
+/* Style the dropdown button to fit inside the topnav */
+.dropdown .dropbtn {
+  font-size: 17px;
+  border: none;
+  outline: none;
+  color: black;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
 }
 
-#mobile-menu.is-active .bar:nth-child(1) {
-  -webkit-transform: translateY(8px) rotate(45deg);
-  -ms-transform: translateY(8px) rotate(45deg);
-  -o-transform: translateY(8px) rotate(45deg);
-  transform: translateY(8px) rotate(45deg);
+/* Style the dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
 
-#mobile-menu.is-active .bar:nth-child(3) {
-  -webkit-transform: translateY(-8px) rotate(-45deg);
-  -ms-transform: translateY(-8px) rotate(-45deg);
-  -o-transform: translateY(-8px) rotate(-45deg);
-  transform: translateY(-8px) rotate(-45deg);
+/* Style the links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+#dropdown-content-avatar {
+  transform: translateX(-90px);
 }
 
-/* KEYFRAME ANIMATIONS */
-
-@-webkit-keyframes gradbar {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+/* Add a dark background on topnav links and the dropdown button on hover */
+.topnav a:hover,
+.dropdown:hover .dropbtn {
+  background-color: #555;
+  color: white;
+}
+#nav-logo:hover {
+  background-color: rgb(175, 159, 134);
 }
 
-@-moz-keyframes gradbar {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+/* Add a grey background to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+
+  color: black;
+}
+.add-btn {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+#avatar {
+  float: right;
+  padding-right: 20px;
+}
+#avatar-icon {
+  color: rgb(58, 58, 58);
+  transform: scale(1.3);
+}
+/* Show the dropdown menu when the user moves the mouse over the dropdown button */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+#searchbox {
+  display: flex;
+  margin-top: 12px;
+  background-color: white;
+  margin-right: 20px;
+  padding: 4px 2px;
+  border: 1px solid rgb(110, 108, 104);
+  border-radius: 4px;
+  float: right;
+}
+#searchbox input {
+  border: none;
+  outline: none;
+  width: 300px;
 }
 
-@keyframes gradbar {
-  0% {
-    background-position: 0% 50%;
+/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child),
+  .dropdown .dropbtn {
+    display: none;
   }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* Media Queries */
-
-/* Mobile Devices - Phones/Tablets */
-
-@media only screen and (max-width: 720px) {
-  .features {
-    flex-direction: column;
-    padding: 50px;
-  }
-
-  /* MOBILE HEADINGS */
-
-  h1 {
-    font-size: 1.9rem;
-  }
-
-  h2 {
-    font-size: 1rem;
-  }
-
-  p {
-    font-size: 0.8rem;
-  }
-
-  /* MOBILE NAVIGATION */
-
-  .navbar ul {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    justify-content: start;
-    top: 55px;
-    background-color: #fff;
-    width: 100%;
-    height: calc(100vh - 55px);
-    transform: translate(-101%);
-    text-align: center;
-    overflow: hidden;
-  }
-
-  .navbar li {
-    padding: 15px;
-  }
-
-  .navbar li:first-child {
-    margin-top: 50px;
-  }
-
-  .navbar li a {
-    font-size: 1rem;
-  }
-
-  .menu-toggle,
-  .bar {
+  .topnav a.icon {
+    float: right;
     display: block;
-    cursor: pointer;
   }
-
-  .mobile-nav {
-    transform: translate(0%) !important;
+  .topnav a.icon:hover {
+    background-color: transparent;
   }
-
-  /* SECTIONS */
-
-  .headline {
-    height: 20vh;
+  #searchbox {
+    float: left;
   }
-
-  .feature-container p {
-    margin-bottom: 25px;
+  #searchbox input {
+    width: 150px;
   }
+}
 
-  .feature-container {
-    margin-top: 20px;
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+@media screen and (max-width: 600px) {
+  .topnav.responsive {
+    position: relative;
   }
-
-  .feature-container:nth-child(2) {
-    order: -1;
+  .topnav.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
   }
-
-  /* SEARCH DISABLED ON MOBILE */
-
-  #search-icon {
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .topnav.responsive .dropdown {
+    float: none;
+  }
+  .topnav.responsive .dropdown-content {
+    position: relative;
+  }
+  .topnav.responsive .dropdown .dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+  #avatar {
     display: none;
   }
+}
 
-  .search-input {
-    display: none;
-  }
+#avatar {
+  float: right;
+  padding-right: 20px;
+}
+#avatar-icon {
+  color: rgb(58, 58, 58);
+  transform: scale(1.3);
 }
 
 /*index*/
@@ -361,12 +225,31 @@ input {
   justify-content: space-between;
   align-items: center;
 }
-
+.left-content a {
+  text-decoration: none;
+  color: green;
+}
+.left-content1 {
+  padding-bottom: 20px;
+  border-bottom: solid 1px rgb(151, 122, 98);
+}
+.left-content2 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: solid 1px rgb(151, 122, 98);
+}
+.left-content2 p {
+  padding-bottom: 8px;
+}
+.left-content2 input {
+  width: 50px;
+}
 /*updates*/
 .content {
   background-color: white;
   padding: 30px;
   border: 1px solid #c5b290;
+  margin-bottom: 20px;
 }
 .content a {
   text-decoration: none;
@@ -375,10 +258,88 @@ input {
 .book-content {
   margin-left: 20px;
 }
+.book-content h2 {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 0 !important;
+}
+.book-content h4 {
+  padding-bottom: 2px;
+  margin-top: 0 !important;
+}
+.book-content p {
+  padding-top: 10px;
+  font-size: 15px;
+}
+
+.show-read-more .more-text {
+  display: none;
+}
 .book-details {
   display: flex;
   width: 100%;
 }
+.book-img {
+  margin-top: 30px;
+}
+#book-content-dropdown {
+  background-color: rgb(39, 151, 39);
+  padding: 6px 20px;
+  color: white;
+}
+.comment-box {
+  margin-top: 12px;
+
+  max-height: 150px;
+  overflow: scroll;
+}
+.comment-box::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.comment-box input {
+  border: none;
+  outline: none;
+  width: 100%;
+  background-color: rgba(197, 195, 195, 0.103);
+  padding: 12px 6px;
+}
+.comment-box p {
+  padding-top: 6px;
+  font-size: 12px;
+}
+.comment-box p span {
+  font-weight: bold;
+}
+.rating {
+  display: block;
+
+  align-items: center;
+}
+.comments span {
+  font-weight: bold;
+}
+.comments p {
+  font-size: small;
+  color: grey;
+}
+.comments {
+  margin-top: 12px;
+  max-height: 300px;
+  overflow: scroll;
+}
+.comments::-webkit-scrollbar {
+  height: 0;
+  width: 0;
+}
+/*read more*/
+.morecontent span {
+  display: none;
+}
+.morelink {
+  display: block;
+}
+
 /*footer*/
 .footer {
   padding-left: 20px;
@@ -396,3 +357,31 @@ input {
 .footer-footer {
   margin-bottom: 20px;
 }
+.res-nav {
+  display: none !important;
+}
+@media only screen and (max-width: 720px) {
+  .index {
+    padding: 10px;
+    min-height: 100vh;
+    background-color: rgb(248, 244, 238);
+    display: flex;
+    flex-direction: column;
+  }
+  .left-content {
+    display: none;
+  }
+  .footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    background-color: rgb(196, 188, 173);
+  }
+  .topnav.responsive .res-nav {
+    display: block !important;
+  }
+  .topnav.responsive #searchbox {
+    display: none;
+  }
+}
+
+/*add-book form*/
