@@ -25,6 +25,10 @@ export const landingPage = router.get('/landing',  (req, res) => {
 export const guestPage = router.get('/guest', (req, res) => {
     return res.render('guest')
 })
+export const noAuthPage = router.get('/guestlanding', (req, res) => {
+  const search = req.query.search
+  return res.render('guestLanding',{search})
+})
 export const bookForm = router.get('/bookform',  (req, res, next) => {
     res.render('authpages/bookform');
 });

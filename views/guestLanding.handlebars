@@ -10,17 +10,6 @@
         <a href="#home">Home</a>
         <a href="#news">My Books</a>
 
-        <div class="dropdown">
-            <button class="dropbtn">Browse
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="#">Horror</a>
-                <a href="#">Romance</a>
-                <a href="#">Thriller</a>
-            </div>
-        </div>
-
 
         <div class="dropdown" id="avatar">
 
@@ -28,21 +17,12 @@
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content" id="dropdown-content-avatar">
-                <a href="/pages/bookform"><button onclick="document.getElementById('id01').style.display='block'"
-                        class="add-btn"><i class="fas fa-plus"></i>Add Book</button></a>
-                <a href="#">Logout</a>
+                <a href="#">Sign In</a>
 
             </div>
         </div>
-        {{!-- <div class="dropdown" id="searchbox">
-            <input type="text" placeholder="Search Book"><i class="fa fa-search"></i>
-        </div> --}}
-        <div class="form-inline">
-            <div class="form-group dropdown" id="searchbox">
-                <input placeholder="Search Book..." v-model="search" class="form-control">
-                <button id="searchButton1" onclick="handleSearch(app.search)" ><i class="fa fa-search"></i></button>
-            </div>
-        </div>
+
+
         <a href="#" class="res-nav"><button onclick="document.getElementById('id01').style.display='block'"
                 class="w3-button w3-black">Add Book</button></a>
         <a href="#" class="res-nav">Logout</a>
@@ -66,10 +46,11 @@
                     </div>
                     <div class="form-inline">
                         <div class="form-group dropdown" id="searchbox">
-                        <input placeholder="Genre/Author/Language" v-model="searchLeft" class="form-control">
-                        <button id="searchButton1" onclick="handleSearchLeft(app.searchLeft)" ><i class="fa fa-search"></i></button>
+                            <input placeholder="Genre/Author/Language" v-model="searchGuest" class="form-control">
+                            <button id="searchButton1" onclick="handleSearchGuest(app.searchGuest)"><i
+                                    class="fa fa-search"></i></button>
+                        </div>
                     </div>
-        </div>
                     <a href="">Recommendations</a>.<a href="">General Updates</a>
                 </div>
                 <div class="left-content2">
@@ -104,15 +85,15 @@
                                 <option value="">Want to read</option>
                             </select>
                             <div class="rate-it">
-                                    <p>Rate it:</p>
-                                    <ul class="rating" >
-                                        <li class="rating-item" data-rate="1"></li>
-                                        <li class="rating-item " data-rate="2"></li>
-                                        <li class="rating-item" data-rate="3"></li>
-                                        <li class="rating-item" data-rate="4"></li>
-                                        <li class="rating-item" data-rate="5"></li>
-                                    </ul>
-                                </div>
+                                <p>Rate it:</p>
+                                <ul class="rating">
+                                    <li class="rating-item" data-rate="1"></li>
+                                    <li class="rating-item " data-rate="2"></li>
+                                    <li class="rating-item" data-rate="3"></li>
+                                    <li class="rating-item" data-rate="4"></li>
+                                    <li class="rating-item" data-rate="5"></li>
+                                </ul>
+                            </div>
                             <p style="margin-top: 3px;" class="more">${data.description}</p>
 
                         </div>
@@ -135,7 +116,7 @@
                 </div>
 
 
-               
+
 
 
             </div>
@@ -246,81 +227,65 @@
     }
 
 </script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios@0.19.2/dist/axios.min.js"></script>
+
+
+<script>
+    /*star rating*/
+    function rating(num) {
+        const container = document.querySelectorAll('.rating')[num];
+        const items = container.querySelectorAll('.rating-item');
+
+        container.addEventListener('click', (e) => {
+
+
+            const eClass = e.target.classList;
+            items.forEach(
+                item => item.classList.add('not-filled')
+            );
+            if (!eClass.contains('active')) {
+                items.forEach(
+                    item => item.classList.remove('active')
+                );
+                console.log(e.target.getAttribute("data-rate"));
+                eClass.add("active");
+            }
+        })
+
+    }
+</script>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios@0.19.2/dist/axios.min.js"></script>
 <script>
     var app = new Vue({
         el: '#main',
         data: {
             booksData: [],
-            search: "",
-            searchLeft: "",
+            searchGuest: "",
         },
         delimiters: ['${', '}'],
     })
 
 </script>
-
 <script>
-
-    function handleSearch(search) {
+    function handleSearchGuest(search) {
         console.log('button clicked')
         app.booksData = []
         console.log(search)
-        axios.get(`http://localhost:8080/api/booksapi?search=${search}`).then((res) => {
-
+        axios.get(`http://localhost:8080/api/noauthbooks?search=${search}`).then((res) => {
             app.booksData = res.data.booksData
             console.log(res.data.booksData)
-        })
-    }
-    function handleSearchLeft(searchLeft) {
-        console.log('button clicked')
-        app.booksData = []
-        console.log(searchLeft)
-        axios.get(`http://localhost:8080/api/booksapi?searchLeft=${searchLeft}`).then((res) => {
-
-            app.booksData = res.data.booksData
-            console.log(res.data.booksData)
-        })
-    }
-    axios.get('http://localhost:8080/api/booksapi')
-        .then((res) => {
-            app.booksData = res.data.booksData
-            console.log(app.booksData)
-            //const contentData = document.getElementById("contentData")
-            //datas.forEach((data)=>{
-            //  document.createElement('p').innerHTML = 'Trending this week in one of your favorite genres,';
-            //contentData.appendChild('p').innerHTML=
-            //contentData.appendChild('a').innerHTML=data.genre;
-            // const pd = contentData.appendChild('div').className='book-details';
-            // pd.appendChild()
-        })
-        .catch((err) => {
+        }).catch((err) => {
             console.log(err)
         })
-
-
- /*star rating*/
-                     function rating(num){
-                         const container = document.querySelectorAll('.rating')[num];
-                         const items = container.querySelectorAll('.rating-item');
-
-                         container.addEventListener('click', (e) => {
-
-                             
-                             const eClass = e.target.classList;
-                             items.forEach(
-                                 item => item.classList.add('not-filled')
-                             );
-                             if (!eClass.contains('active')) {
-                                 items.forEach(
-                                     item => item.classList.remove('active')
-                                 );
-                                 console.log(e.target.getAttribute("data-rate"));
-                                 eClass.add("active");
-                             }
-                         })
-
-                     }
-
+    }
+</script>
+<script>
+    console.log('{{{search}}}')
+    console.log(app.booksData)
+    console.log(`http://localhost:8080/api/noauthbooks?search={{{search}}}`)
+    axios.get(`http://localhost:8080/api/noauthbooks?search={{{search}}}`).then((res) => {
+        app.booksData = res.data.booksData
+    }).catch((err) => {
+        console.log(err)
+    })
 </script>

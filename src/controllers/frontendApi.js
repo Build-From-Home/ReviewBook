@@ -19,7 +19,24 @@ export const bookApi = router.get('/booksapi', async (req,res)=>{
                 
               }
             })
-      }else{
+      }else if(req.query.searchLeft){
+        const regex = new RegExp(escapeRegex(req.query.searchLeft), 'gi');
+        booksCollection.find({$or:[{genre:regex},{authorName: regex},{language: regex}]}, (err, data) => {
+
+              console.log(data);
+
+              if (err) {
+                  console.log(err)
+              }
+              else {
+                return res.json({booksData:data})
+                
+              }
+            })
+
+      }
+      
+      else{
         booksCollection.find((err, data) => {
             //  console.log(data);
             if (err) {
@@ -33,6 +50,23 @@ export const bookApi = router.get('/booksapi', async (req,res)=>{
       }
 
     
+})
+
+export const noAuthBooks = router.get('/noauthbooks', async (req, res) => {
+    console.log(req.query.search)
+    const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+    booksCollection.find({ $or: [{ bookTitle: regex }, { genre: regex }, { authorName: regex }, { language: regex }] }, (err, data) => {
+
+        console.log(data);
+
+        if (err) {
+            console.log(err)
+        }
+        else {
+            return res.json({ booksData: data })
+
+        }
+    })
 })
 
 function escapeRegex(text) {
