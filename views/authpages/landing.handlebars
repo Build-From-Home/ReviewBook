@@ -1,313 +1,314 @@
-  
 <head>
-     <link rel="stylesheet" href="../../assets/index.css">
-</head>  
-        <!---navbar-->
-<div class="topnav" id="myTopnav">
-    <a href="#home" id="nav-logo"><img src="https://images.gr-assets.com/doodles/1619806753i/30.svg" height="20px" alt="Logo"></a>
-    <a href="#home">Home</a>
-    <a href="#news">My Books</a>
-    
-    <div class="dropdown">
-        <button class="dropbtn">Browse
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-            <a href="#">Horror</a>
-            <a href="#">Romance</a>
-            <a href="#">Thriller</a>
+    <link rel="stylesheet" href="../../assets/index.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<!---navbar-->
+<div id="main">
+    <div class="topnav" id="myTopnav">
+        <a href="#home" id="nav-logo"><img src="https://images.gr-assets.com/doodles/1619806753i/30.svg" height="20px"
+                alt="Logo"></a>
+        <a href="#home">Home</a>
+        <a href="#news">My Books</a>
+
+        <div class="dropdown">
+            <button class="dropbtn">Browse
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="#">Horror</a>
+                <a href="#">Romance</a>
+                <a href="#">Thriller</a>
+            </div>
         </div>
-    </div>
-    
-   
-     <div class="dropdown" id="avatar">
-        
-        <button class="dropbtn"><i id='avatar-icon'class="fas fa-user-circle"></i>
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content" id="dropdown-content-avatar">
-            <a href="/pages/bookform"><button onclick="document.getElementById('id01').style.display='block'"
-                    class="add-btn"><i class="fas fa-plus"></i>Add Book</button></a>
-            <a href="#">Logout</a>
-            
+
+
+        <div class="dropdown" id="avatar">
+
+            <button class="dropbtn"><i id='avatar-icon' class="fas fa-user-circle"></i>
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content" id="dropdown-content-avatar">
+                <a href="/pages/bookform"><button onclick="document.getElementById('id01').style.display='block'"
+                        class="add-btn"><i class="fas fa-plus"></i>Add Book</button></a>
+                <a href="#">Logout</a>
+
+            </div>
         </div>
+        {{!-- <div class="dropdown" id="searchbox">
+            <input type="text" placeholder="Search Book"><i class="fa fa-search"></i>
+        </div> --}}
+        <div class="form-inline">
+            <div class="form-group dropdown" id="searchbox">
+                <input placeholder="Search Book..." v-model="search" class="form-control">
+                <button id="searchButton1" onclick="handleSearch(app.search)" ><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+        <a href="#" class="res-nav"><button onclick="document.getElementById('id01').style.display='block'"
+                class="w3-button w3-black">Add Book</button></a>
+        <a href="#" class="res-nav">Logout</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fas fa-bars"></i></a>
+
+
     </div>
-    <div class="dropdown" id="searchbox">
-        <input type="text" placeholder="Search Book"><i class="fa fa-search"></i>
-    </div>
-    <a href="#" class="res-nav"><button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Add Book</button></a>
-    <a href="#" class="res-nav">Logout</a>
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fas fa-bars"></i></a>
+    <!--book form -->
 
 
-</div>
-<!--book form -->
-
-</div>
     <!--index-->
     <div class="index-wrapper">
-            <div class="index">
-                <div class="left-content">
-                    <div class="left-content1">
-                        <h4>CURRENTLY READING</h4>
-                        <div class="what-r-u-doing"><img
-                                src="https://s.gr-assets.com/assets/react_components/currently_reading/icn_default_CR_ltrail-16f28d39654104ceb329648a474943eb.svg"
-                                alt="">
-                            <p>What are you reading</p>
-                        </div>
-                        <div class="dropdown" id="searchbox">
-                            <input type="text" placeholder="Search Book"><i class="fa fa-search"></i>
-                        </div>
-                        <a href="">Recommendations</a>.<a href="">General Updates</a>
+        <div class="index">
+            <div class="left-content">
+                <div class="left-content1">
+                    <h4>CURRENTLY READING</h4>
+                    <div class="what-r-u-doing"><img
+                            src="https://s.gr-assets.com/assets/react_components/currently_reading/icn_default_CR_ltrail-16f28d39654104ceb329648a474943eb.svg"
+                            alt="">
+                        <p>Search and browse books</p>
                     </div>
-                    <div class="left-content2">
-                        <h4>2021 READING CHALLENGE</h4>
-                        <P>Challenge yourself to read more this year!</P>
-                        <div class="what-r-u-doing"><img
-                                src="https://i2.wp.com/keepingupwiththepenguins.com/wp-content/uploads/2020/12/Read-More-2021-A-Z-Reading-Challenges-Keeping-Up-With-The-Penguins.jpg?fit=735%2C1102&ssl=1"
-                                alt="" width="100px">
-                            
-                        </div>
-                       
+                    <div class="dropdown" id="searchbox">
+                        <input type="text" placeholder="Title/Author/Language"><i class="fa fa-search"></i>
                     </div>
+                    <a href="">Recommendations</a>.<a href="">General Updates</a>
                 </div>
-                <div id="main" class="updates">
-                    <h4>UPDATES</h4>
-                   
-                    <div id="contentData" v-for="data in booksData" class="content">
-                        <p>Trending this week in one of your favorite genres,</p>
-                        <a href="">${data.genre}</a>
-                    
-                       
-                        <div class="book-details">
-                    
-                            <div class="book-img">
-                                <img v-bind:src="require(${data.coverImage})"
-                                    alt="">
-                            </div>
-                    
-                            <div class="book-content">
-                                
-                                <h2>${data.bookTitle},${data.coverImage}</h2>
-                                
-                                <h4>by ${data.authorName}</h4>
-                                <select name="" id="book-content-dropdown">
-                                    <option value="">Want to read</option>
-                                </select>
-                                <div class="rating">
-                                    <p>Rate it:</p><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i
-                                        class="far fa-star"></i><i class="far fa-star"></i>
-                                </div>
-                                <p style="margin-top: 3px;" class="more">${data.description}</p>
-                    
-                            </div>
-                    
-                        </div>
-                        
-                       
-                        <div class="comment-box">
-                            <input type="text" placeholder="Add a review...">
-                    
-                        </div>
-                        <div class="comments">
-                            <p><span>Anand </span>Be aware that a retired Juniper Customer Care phone number is being
-                            used
-                            fraudulently. Customers calling this number are offered a cash rebate in exchange for information,
-                            including Juniper</p>
-                        </div>
-                        
-                    </div>
-                  
+                <div class="left-content2">
+                    <h4>2021 READING CHALLENGE</h4>
+                    <P>Challenge yourself to read more this year!</P>
+                    <div class="what-r-u-doing"><img
+                            src="https://i2.wp.com/keepingupwiththepenguins.com/wp-content/uploads/2020/12/Read-More-2021-A-Z-Reading-Challenges-Keeping-Up-With-The-Penguins.jpg?fit=735%2C1102&ssl=1"
+                            alt="" width="100px">
 
-                    <div class="content">
-                        <p>Trending this week in one of your favorite genres,</p>
-                        <a href="">Romance</a>
-                    
-                        <div class="book-details">
-                    
-                            <div class="book-img">
-                                <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1597940104i/54332582._SY180_.jpg"
-                                    alt="">
-                            </div>
-                    
-                            <div class="book-content">
-                    
-                                <h2>The Seat Filler</h2>
-                                <h4>by Sariah Wilson</h4>
-                                <select name="" id="book-content-dropdown">
-                                    <option value="">Want to read</option>
-                                </select>
-                                <div class="rating">
-                                    <p>Rate it:</p><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i
-                                        class="far fa-star"></i><i class="far fa-star"></i>
-                                </div>
-                                <p style="margin-top: 3px;" class="more">Be aware that a retired Juniper Customer Care phone number is being
-                                    used
-                                    fraudulently. Customers calling this number are offered a cash rebate in exchange for information,
-                                    including Juniper
-                                    contract ID, email address, and credit card number. Juniper is not associated with this rebate offer and
-                                    has no
-                                    relationship with the company offering it.<br />Juniper is working with the proper authorities in order
-                                    to cease
-                                    this inappropriate activity.<br />Please update your records with the correct Customer Care number:
-                                    888-314-5822.
-                                    Please also bookmark:     </p>
-                    
-                            </div>
-                    
-                        </div>
-                        <div class="comment-box">
-                            <input type="text" placeholder="Add a review...">
-                    
-                        </div>
-                        <div class="comments">
-                            <p><span>Anand </span>Be aware that a retired Juniper Customer Care phone number is being
-                                used
-                                fraudulently. Customers calling this number are offered a cash rebate in exchange for information,
-                                including Juniper</p>
-                        </div>
                     </div>
-            
-            
+
                 </div>
-                <div class="footer">
-                    <div class="footer-links">
-                        <div class="company">
-                            <h4>COMPANY</h4>
-                            <ul>
-                                <li><a href="">About Us</a></li>
-                                <li><a href="">Careers</a></li>
-                                <li><a href="">Terms</a></li>
-                                <li><a href="">Privacy</a></li>
-                            </ul>
-            
-            
-                        </div>
-                        <div class="work-withus">
-                            <h4>WORK WITHUS</h4>
-                            <ul>
-                                <li><a href="">About Us</a></li>
-                                <li><a href="">Careers</a></li>
-                                <li><a href="">Terms</a></li>
-                                <li><a href="">Privacy</a></li>
-                            </ul>
-            
-            
-            
-            
-                        </div>
-            
-                    </div>
-                    <div class="footer-footer">
-                        <h4>CONNECT</h4>
-                        <img src="https://s.gr-assets.com/assets/site_footer/footer_facebook-ea4ab848f8e86c5f5c98311bc9495a1b.svg"
-                            alt="">
-                        <img src="https://s.gr-assets.com/assets/site_footer/footer_twitter-126b3ee80481a763f7fccb06ca03053c.svg"
-                            alt="">
-                        <img src="https://s.gr-assets.com/assets/site_footer/footer_instagram-d59e3887020f12bcdb12e6c539579d85.svg"
-                            alt="">
-                        <img src="https://s.gr-assets.com/assets/site_footer/footer_linkedin-5b820f4703eff965672594ef4d10e33c.svg"
-                            alt="">
-            
-                        <br>
-                        <img src="https://s.gr-assets.com/assets/app/badge-ios-desktop-homepage-6ac7ae16eabce57f6c855361656a7540.svg"
-                            alt="">
-            
-                        <img src="https://s.gr-assets.com/assets/app/badge-android-desktop-home-0f517cbae4d56c88a128d27a7bea1118.png"
-                            alt="">
-                    </div>
-                </div>
-            
             </div>
+            <div class="updates">
+                <h4>UPDATES</h4>
+
+                <div id="contentData" v-for="data in booksData" class="content">
+                    <p>Trending this week in one of your favorite genres,</p>
+                    <a href="">${data.genre}</a>
+
+
+                    <div class="book-details">
+
+                        <div class="book-img">
+                            <img v-bind:src="data.coverImage" alt="">
+                        </div>
+
+                        <div class="book-content">
+
+                            <h2>${data.bookTitle}</h2>
+
+                            <h4>by ${data.authorName}</h4>
+                            <select name="" id="book-content-dropdown">
+                                <option value="">Want to read</option>
+                            </select>
+                            <div class="rate-it">
+                                    <p>Rate it:</p>
+                                    <ul class="rating" >
+                                        <li class="rating-item" data-rate="1"></li>
+                                        <li class="rating-item " data-rate="2"></li>
+                                        <li class="rating-item" data-rate="3"></li>
+                                        <li class="rating-item" data-rate="4"></li>
+                                        <li class="rating-item" data-rate="5"></li>
+                                    </ul>
+                                </div>
+                            <p style="margin-top: 3px;" class="more">${data.description}</p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="comment-box">
+                        <input type="text" placeholder="Add a review...">
+
+                    </div>
+                    <div class="comments">
+                        <p><span>Anand </span>Be aware that a retired Juniper Customer Care phone number is being
+                            used
+                            fraudulently. Customers calling this number are offered a cash rebate in exchange for
+                            information,
+                            including Juniper</p>
+                    </div>
+
+                </div>
+
+
+               
+
+
+            </div>
+            <div class="footer">
+                <div class="footer-links">
+                    <div class="company">
+                        <h4>COMPANY</h4>
+                        <ul>
+                            <li><a href="">About Us</a></li>
+                            <li><a href="">Careers</a></li>
+                            <li><a href="">Terms</a></li>
+                            <li><a href="">Privacy</a></li>
+                        </ul>
+
+
+                    </div>
+                    <div class="work-withus">
+                        <h4>WORK WITHUS</h4>
+                        <ul>
+                            <li><a href="">About Us</a></li>
+                            <li><a href="">Careers</a></li>
+                            <li><a href="">Terms</a></li>
+                            <li><a href="">Privacy</a></li>
+                        </ul>
+
+
+
+
+                    </div>
+
+                </div>
+                <div class="footer-footer">
+                    <h4>CONNECT</h4>
+                    <img src="https://s.gr-assets.com/assets/site_footer/footer_facebook-ea4ab848f8e86c5f5c98311bc9495a1b.svg"
+                        alt="">
+                    <img src="https://s.gr-assets.com/assets/site_footer/footer_twitter-126b3ee80481a763f7fccb06ca03053c.svg"
+                        alt="">
+                    <img src="https://s.gr-assets.com/assets/site_footer/footer_instagram-d59e3887020f12bcdb12e6c539579d85.svg"
+                        alt="">
+                    <img src="https://s.gr-assets.com/assets/site_footer/footer_linkedin-5b820f4703eff965672594ef4d10e33c.svg"
+                        alt="">
+
+                    <br>
+                    <img src="https://s.gr-assets.com/assets/app/badge-ios-desktop-homepage-6ac7ae16eabce57f6c855361656a7540.svg"
+                        alt="">
+
+                    <img src="https://s.gr-assets.com/assets/app/badge-android-desktop-home-0f517cbae4d56c88a128d27a7bea1118.png"
+                        alt="">
+                </div>
+            </div>
+
+        </div>
     </div>
+</div>
 
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://www.juniper.net/assets/js/jquery/1.4/jquery-1.4.3.min.js"></script>
-    <script>
-            $(document).ready(function () {
-                    // Configure/customize these variables.
-                    var showChar = 300;  // How many characters are shown by default
-                    var ellipsestext = "";
-                    var moretext = "Read More";
-                    var lesstext = "Read Less";
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://www.juniper.net/assets/js/jquery/1.4/jquery-1.4.3.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Configure/customize these variables.
+        var showChar = 300;  // How many characters are shown by default
+        var ellipsestext = "";
+        var moretext = "Read More";
+        var lesstext = "Read Less";
 
 
-                    $('.more').each(function () {
-                        var content = $(this).html();
+        $('.more').each(function () {
+            var content = $(this).html();
 
-                        if (content.length > showChar) {
+            if (content.length > showChar) {
 
-                            var c = content.substr(0, showChar);
-                            var h = content.substr(showChar, content.length - showChar);
+                var c = content.substr(0, showChar);
+                var h = content.substr(showChar, content.length - showChar);
 
-                            var html = c + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+                var html = c + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
 
-                            $(this).html(html);
-                        }
-
-                    });
-
-                    $(".morelink").click(function () {
-                        
-                        if ($(this).hasClass("less")) {
-                            $(this).removeClass("less");
-                            
-                            $(this).html(moretext);
-                        } else {
-                            $(this).addClass("less");
-                            
-                            $(this).html(lesstext);
-                        }
-                        $(this).parent().prev().toggle();
-                        $(this).prev().toggle();
-                        return false;
-                    });
-                });
-        /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
-            function myFunction() {
-                var x = document.getElementById("myTopnav");
-                if (x.className === "topnav") {
-                    x.className += " responsive";
-                } else {
-                    x.className = "topnav";
-                }
+                $(this).html(html);
             }
-            
-    </script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios@0.19.2/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
-    <script>
-        var app = new Vue({
-            el:'#main',
-            data:{
-                booksData:[],
-            },
-            delimiters: ['${', '}'],
+
+        });
+
+        $(".morelink").click(function () {
+
+            if ($(this).hasClass("less")) {
+                $(this).removeClass("less");
+
+                $(this).html(moretext);
+            } else {
+                $(this).addClass("less");
+
+                $(this).html(lesstext);
+            }
+            $(this).parent().prev().toggle();
+            $(this).prev().toggle();
+            return false;
+        });
+    });
+    /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios@0.19.2/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>
+    var app = new Vue({
+        el: '#main',
+        data: {
+            booksData: [],
+            search: "",
+        },
+        delimiters: ['${', '}'],
+    })
+
+</script>
+
+<script>
+
+    function handleSearch(search) {
+        console.log('button clicked')
+        app.booksData = []
+        console.log(search)
+        axios.get(`http://localhost:8080/api/booksapi?search=${search}`).then((res) => {
+
+            app.booksData = res.data.booksData
+            console.log(res.data.booksData)
         })
-
-    </script>
-
-    <script>
-        axios.get('http://localhost:8080/api/booksapi')
-        .then((res)=>{
+    }
+    axios.get('http://localhost:8080/api/booksapi')
+        .then((res) => {
             app.booksData = res.data.booksData
             console.log(app.booksData)
             //const contentData = document.getElementById("contentData")
             //datas.forEach((data)=>{
-              //  document.createElement('p').innerHTML = 'Trending this week in one of your favorite genres,';
-                //contentData.appendChild('p').innerHTML=
-                //contentData.appendChild('a').innerHTML=data.genre;
-               // const pd = contentData.appendChild('div').className='book-details';
-               // pd.appendChild()
-            })
-        .catch((err)=>{
+            //  document.createElement('p').innerHTML = 'Trending this week in one of your favorite genres,';
+            //contentData.appendChild('p').innerHTML=
+            //contentData.appendChild('a').innerHTML=data.genre;
+            // const pd = contentData.appendChild('div').className='book-details';
+            // pd.appendChild()
+        })
+        .catch((err) => {
             console.log(err)
         })
-            
-           
-        
 
-    </script>
-    
+
+ /*star rating*/
+                     function rating(num){
+                         const container = document.querySelectorAll('.rating')[num];
+                         const items = container.querySelectorAll('.rating-item');
+
+                         container.addEventListener('click', (e) => {
+
+                             
+                             const eClass = e.target.classList;
+                             items.forEach(
+                                 item => item.classList.add('not-filled')
+                             );
+                             if (!eClass.contains('active')) {
+                                 items.forEach(
+                                     item => item.classList.remove('active')
+                                 );
+                                 console.log(e.target.getAttribute("data-rate"));
+                                 eClass.add("active");
+                             }
+                         })
+
+                     }
+
+</script>
