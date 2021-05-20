@@ -1,15 +1,16 @@
 import express from 'express';
 // import { authenticationMiddleware } from './authController.js';
 import booksCollection from '../models/booksCollection.js'
+import locus from 'locus'
 
 const router = express.Router();
 
 export const landingPage = router.get('/landing',  (req, res) => {
-
     const { user_id, name, email, jwtToken } = req.query
     res.locals.JWTTOKEN = jwtToken
-
     return res.render('authpages/landing')
+
+    // return res.render('authpages/landing')
     // booksCollection.find((err, data) => {
     //     // console.log(data);
     //     if (err) {
@@ -23,6 +24,10 @@ export const landingPage = router.get('/landing',  (req, res) => {
 })
 export const guestPage = router.get('/guest', (req, res) => {
     return res.render('guest')
+})
+export const noAuthPage = router.get('/guestlanding', (req, res) => {
+  const search = req.query.search
+  return res.render('guestLanding',{search})
 })
 export const bookForm = router.get('/bookform',  (req, res, next) => {
     res.render('authpages/bookform');

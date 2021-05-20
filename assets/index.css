@@ -128,6 +128,11 @@ body {
   outline: none;
   width: 300px;
 }
+#searchButton1{
+  background-color: transparent;
+  Border:none;
+  Outline:none;
+}
 
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
 @media screen and (max-width: 600px) {
@@ -338,6 +343,48 @@ body {
 }
 .morelink {
   display: block;
+}
+/*rating*/
+.rate-it {
+  height: 40px;
+
+  display: flex;
+  align-content: center;
+}
+
+.rating {
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+.rating li {
+  list-style-type: none;
+}
+.rating-item {
+  cursor: pointer;
+  font-size: 2rem;
+  color: rgb(255, 197, 6);
+  display: flex;
+  align-items: center;
+}
+/*initial:make all full*/
+.rating-item::before {
+  content: "\2606";
+}
+.not-filled::before {
+  content: "\2605";
+}
+
+/*make untill the cliicked star(the rest ) empty*/
+.rating-item.active ~ .rating-item::before {
+  content: "\2606";
+}
+/*on hover make all full*/
+.rating:hover .rating-item::before {
+  content: "\2605";
+}
+.rating-item:hover ~ .rating-item::before {
+  content: "\2606";
 }
 
 /*footer*/
