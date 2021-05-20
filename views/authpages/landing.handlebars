@@ -202,32 +202,21 @@
         var ellipsestext = "";
         var moretext = "Read More";
         var lesstext = "Read Less";
-
-
         $('.more').each(function () {
             var content = $(this).html();
-
             if (content.length > showChar) {
-
                 var c = content.substr(0, showChar);
                 var h = content.substr(showChar, content.length - showChar);
-
                 var html = c + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
-
                 $(this).html(html);
             }
-
         });
-
         $(".morelink").click(function () {
-
             if ($(this).hasClass("less")) {
                 $(this).removeClass("less");
-
                 $(this).html(moretext);
             } else {
                 $(this).addClass("less");
-
                 $(this).html(lesstext);
             }
             $(this).parent().prev().toggle();
@@ -244,7 +233,6 @@
             x.className = "topnav";
         }
     }
-
 </script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios@0.19.2/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
@@ -258,17 +246,14 @@
         },
         delimiters: ['${', '}'],
     })
-
 </script>
 
 <script>
-
     function handleSearch(search) {
         console.log('button clicked')
         app.booksData = []
         console.log(search)
         axios.get(`http://localhost:8080/api/booksapi?search=${search}`).then((res) => {
-
             app.booksData = res.data.booksData
             console.log(res.data.booksData)
         })
@@ -278,7 +263,6 @@
         app.booksData = []
         console.log(searchLeft)
         axios.get(`http://localhost:8080/api/booksapi?searchLeft=${searchLeft}`).then((res) => {
-
             app.booksData = res.data.booksData
             console.log(res.data.booksData)
         })
@@ -298,15 +282,11 @@
         .catch((err) => {
             console.log(err)
         })
-
-
  /*star rating*/
                      function rating(num){
                          const container = document.querySelectorAll('.rating')[num];
                          const items = container.querySelectorAll('.rating-item');
-
                          container.addEventListener('click', (e) => {
-
                              
                              const eClass = e.target.classList;
                              items.forEach(
@@ -320,7 +300,5 @@
                                  eClass.add("active");
                              }
                          })
-
                      }
-
 </script>

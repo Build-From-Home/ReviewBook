@@ -30,8 +30,8 @@ export const authenticationMiddleware = async (req, res, next) => {
     }
 }
 
-export const signUp = router.post('/signUp', async (req, res) => {
-    console.log("In signUp route")
+export const signUp = router.post('/signup', async (req, res) => {
+    console.log("In signup route")
     console.log(req.body)
     const valid = await validateUser(req.body)
     console.log(valid)
@@ -55,15 +55,44 @@ export const signUp = router.post('/signUp', async (req, res) => {
                 console.log("user sucessfully registerd")
                 const token = createJwtToken(user.displayName)
                 console.log(token)
-                res.redirect(`/pages/landing?user_id=${user._id}&name=${user.name}&email=${user.email}&jwtToken=${token}`)
+                return res.redirect(`/pages/landing?user_id=${user._id}&name=${user.name}&email=${user.email}&jwtToken=${token}`)
             }
         }
         catch (err) {
             console.log("error is from the catch block")
             console.log(err)
-            return res.status(403)
+            return res.status(403).send("Internal server error")
         }
     }
+})
+export const logIn = router.post('/login', async (req, res) => {
+    console.log("at login")
+    try {
+        const user = await userModal.findOne({ email: req.body.email });
+        if (user) {
+            const match = await bcrypt.compare(req.body.password, user.password);
+            if (match) {
+                const token = createJwtToken(user.displayName)
+                return res.redirect(`/pages/landing?user_id=${user._id}&name=${user.name}&email=${user.email}&jwtToken=${token}`)
+            }
+            else {
+                return res.status(404).send("Password doesn't match")
+            }
+        }
+        else {
+            return res.status(400).send("User doesn't exist");
+        }
+    }
+    catch (err) {
+        console.log("error is from the catch block")
+        console.log(err)
+        return res.status(403)
+    }
+
+})
+export const logOut = router.get('/logout', (req, res) => {
+    //need to remove locals from frontend
+    return res.redirect('/pages/guest')
 })
 
 
