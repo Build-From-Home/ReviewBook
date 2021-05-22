@@ -76,7 +76,7 @@ export const bookpage = router.get('/book', authenticationMiddleware, async (req
       console.log("reached this part because of no rating or comments")
       console.log(err)
       booksData.reviews = []
-      booksCollection.findById({ _id: bookid }, (err, book) => {
+      booksCollection.findById({ _id: mongoose.Types.ObjectId(bookid) }, (err, book) => {
         if (book) {
           booksData.book = book
           console.log()
@@ -135,6 +135,7 @@ export const addBook = router.post('/addbook', authenticationMiddleware, async (
     } else {
       console.log('data has been saved to database');
       res.locals = jwtToken
+      console.log(jwtToken)
       return res.render('authpages/landing', { name: name, email: email })
     }
   })
