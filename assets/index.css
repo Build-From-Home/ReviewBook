@@ -294,9 +294,18 @@ body {
 }
 .comment-box {
   margin-top: 12px;
+  display: flex;
 
   max-height: 150px;
   overflow: scroll;
+}
+.comment-box button {
+  width: 50px;
+  border: none;
+  transition: background-color 0.2s ease-in-out;
+}
+.comment-box button:hover {
+  background-color: rgb(202, 202, 202);
 }
 .comment-box::-webkit-scrollbar {
   width: 0;

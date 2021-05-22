@@ -14,22 +14,7 @@
     <a href="#home" id="nav-logo"><img src="https://images.gr-assets.com/doodles/1619806753i/30.svg" height="20px"
             alt="Logo"></a>
     <a href="#home">Home</a>
-    <a href="#news">My Books</a>
-
-    <div class="dropdown">
-        <button class="dropbtn">Browse
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-            <a href="#">Horror</a>
-            <a href="#">Romance</a>
-            <a href="#">Thriller</a>
-        </div>
-    </div>
-
-
     <div class="dropdown" id="avatar">
-
         <button class="dropbtn"><i id='avatar-icon' class="fas fa-user-circle"></i>
             <i class="fa fa-caret-down"></i>
         </button>
@@ -101,7 +86,7 @@
 
                     <div class="book-content">
                         <h2>{{book.bookTitle}}</h2>
-                        <h4>by Sariah Wilson</h4>
+                        <h4>{{book.authorName}}</h4>
                         <select name="" id="book-content-dropdown">
                             <option value="">Want to read</option>
                         </select>
@@ -116,25 +101,13 @@
                             </ul>
                         </div>
                         <p style="margin-top: 3px;padding-bottom:20px;border-bottom: 1px solid lightgray;" class="more">
-                            Be aware that a retired Juniper Customer Care phone
-                            number is being
-                            used
-                            fraudulently. Customers calling this number are offered a cash rebate in exchange for
-                            information,
-                            including Juniper
-                            contract ID, email address, and credit card number. Juniper is not associated with this
-                            rebate offer and
-                            has no
-                            relationship with the company offering it.<br />Juniper is working with the proper
-                            authorities in order
-                            to cease
-                            this inappropriate activity.<br />Please update your records with the correct Customer
-                            Care number:
-                            888-314-5822.
-                            Please also bookmark: </p>
+                            {{book.description}}
+                        </p>
                         <div class="book-links">
                             <h5>GET A COPY</h5>
-                            <button>Amazon IN</button><button>Flipkart</button>
+                            <a href="{{book.linkToAmazon}}"><button>Amazon IN</button></a>
+                            <a href="{{book.linkToFlipkart}}"><button>Flipkart</button></a>
+
                         </div>
 
                     </div>
@@ -157,9 +130,9 @@
                     <div class="review-wrapper">
 
                         <div class="rated-wrapper">
-                            <h5 class="rated-username">Anand</h5>
+                            <h5 class="rated-username">{{reviews.user}}</h5>
                             <p class="p-rated-it">rated it</p>
-                            <ul class="rated" data-rated='2'>
+                            <ul class="rated" data-rated='{{reviews.starRating}}'>
                                 <li class="rated-item"></li>
                                 <li class="rated-item "></li>
                                 <li class="rated-item"></li>
@@ -168,11 +141,7 @@
                             </ul>
                         </div>
                     </div>
-                    <p>Be aware that a retired Juniper Customer Care phone number is being
-                        used
-                        fraudulently. Customers calling this number are offered a cash rebate in exchange for
-                        information,
-                        including Juniper</p>
+                    <p>{{reviews.comment}}</p>
 
 
                     <div class="review-wrapper">
