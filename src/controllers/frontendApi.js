@@ -2,9 +2,10 @@ import express from 'express';
 const router = express.Router();
 import booksCollection from '../models/booksCollection.js';
 import reviewModal from '../models/reviewSchema.js';
+import { authenticationMiddleware } from './authController.js';
 
 
-export const bookApi = router.get('/booksapi', async (req, res) => {
+export const bookApi = router.get('/booksapi' ,authenticationMiddleware, async (req, res) => {
 
     if (req.query.search) {
         console.log('search worked')

@@ -30,8 +30,9 @@
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content" id="dropdown-content-avatar">
-                <a href="/pages/bookform"><button onclick="document.getElementById('id01').style.display='block'"
-                        class="add-btn"><i class="fas fa-plus"></i>Add Book</button></a>
+                <a href="/pages/bookform?jwtToken={{@root.JWTTOKEN}}"><button
+                        onclick="document.getElementById('id01').style.display='block'" class="add-btn"><i
+                            class="fas fa-plus"></i>Add Book</button></a>
                 <a href="/pages/guest">Logout</a>
 
             </div>
@@ -60,7 +61,7 @@
         <div class="index">
             <div class="left-content">
                 <div class="left-content1">
-                    <h4>CURRENTLY READING</h4>
+                    <h4>CURRENTLY READING{{@root.JWTTOKEN}}</h4>
                     <div class="what-r-u-doing"><img
                             src="https://s.gr-assets.com/assets/react_components/currently_reading/icn_default_CR_ltrail-16f28d39654104ceb329648a474943eb.svg"
                             alt="">

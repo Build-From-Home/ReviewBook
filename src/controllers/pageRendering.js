@@ -14,7 +14,7 @@ export const landingPage = router.get('/landing', authenticationMiddleware, (req
   res.locals.JWTTOKEN = jwtToken
   return res.render('authpages/landing', { user_id: user_id, name: name, email: email })
 })
-export const bookpage = router.get('/book', async (req, res) => {
+export const bookpage = router.get('/book', authenticationMiddleware, async (req, res) => {
   console.log("at book endpoint")
   const { bookid } = req.query
   console.log(bookid)
@@ -98,16 +98,15 @@ export const noAuthPage = router.get('/guestlanding', (req, res) => {
   const search = req.query.search
   return res.render('guestLanding', { search })
 })
-export const bookForm = router.get('/bookform', (req, res, next) => {
-  res.render('authpages/bookform');
+export const bookForm = router.get('/bookform', authenticationMiddleware, (req, res, next) => {
+  const { jwtToken } = req.query
+  res.locals.JWTTOKEN = jwtToken
+  return res.render('authpages/bookform');
 });
-export const addBook = router.post('/addbook', async (req, res) => {
-  // console.log(req.body);
-  // console.log(req.files.Image)
+export const addBook = router.post('/addbook', authenticationMiddleware, async (req, res) => {
+  const { jwtToken } = req.query
   let image = req.files.Image
-  // console.log(image);
   let imageName = image.name
-
   image.mv('./assets/uploads/' + imageName, (err) => {
 
     if (err) {
@@ -117,9 +116,6 @@ export const addBook = router.post('/addbook', async (req, res) => {
       return;
     }
   })
-
-
-
   const newbooksCollection = new booksCollection({
     IbnNo: req.body.IBN,
     bookTitle: req.body.Title,
@@ -138,6 +134,7 @@ export const addBook = router.post('/addbook', async (req, res) => {
       console.log(err);
     } else {
       console.log('data has been saved to database');
+      res.locals=jwtToken
       return res.render('authpages/landing')
     }
   })
