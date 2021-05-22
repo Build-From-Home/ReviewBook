@@ -21,12 +21,14 @@ export const bookpage = router.get('/book', authenticationMiddleware, async (req
   var booksData = {}
   await reviewModal.find({ bookid: bookid }, (err, reviews) => {
     if (reviews) {
+      console.log("reached here because of review collection")
       booksData.reviews = reviews
       //booksData.reviews = reviews.map(review => review.toJSON())
       const starReviews = reviews.filter(review => review.starRating)
       console.log(starReviews)
       var sumOfRatings = 0
       if (starReviews) {
+        console.log("reached here because of starreviews in reviews collections")
         starReviews.forEach((starReview) => {
           sumOfRatings = sumOfRatings + starReview.starRating
         })
@@ -52,6 +54,7 @@ export const bookpage = router.get('/book', authenticationMiddleware, async (req
         }).lean()
       }
       else {
+        console.log("reached here beacause of no star ratings in review collection")
         booksCollection.findById({ _id: mongoose.Types.ObjectId(bookid) }, (err, book) => {
           if (book) {
             book.averageRating = 0;
