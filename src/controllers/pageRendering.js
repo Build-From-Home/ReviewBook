@@ -20,14 +20,14 @@ export const bookpage = router.get('/book', authenticationMiddleware, async (req
   console.log(bookid)
   var booksData = {}
   await reviewModal.find({ bookid: bookid }, (err, reviews) => {
-    if (reviews) {
+    if (!reviews.length === 0) {
       console.log("reached here because of review collection")
       booksData.reviews = reviews
       //booksData.reviews = reviews.map(review => review.toJSON())
       const starReviews = reviews.filter(review => review.starRating)
       console.log(starReviews)
       var sumOfRatings = 0
-      if (starReviews) {
+      if (!starReviews.length === 0) {
         console.log("reached here because of starreviews in reviews collections")
         starReviews.forEach((starReview) => {
           sumOfRatings = sumOfRatings + starReview.starRating
