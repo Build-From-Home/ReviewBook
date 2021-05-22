@@ -22,7 +22,7 @@ export const authenticationMiddleware = async (req, res, next) => {
             next();
         }
         else {
-            return res.redirect('guest')
+            return res.redirect('/pages/guest')
         }
 
     } catch (err) {
