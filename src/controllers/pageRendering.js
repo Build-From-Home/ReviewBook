@@ -20,7 +20,7 @@ export const bookpage = router.get('/book', async (req, res) => {
   console.log(bookid)
   var booksData = {}
   await reviewModal.find({ bookid: bookid }, (err, reviews) => {
-    if (!reviews.length === 0) {
+    if (reviews) {
       booksData.reviews = reviews
       //booksData.reviews = reviews.map(review => review.toJSON())
       const starReviews = reviews.filter(review => review.starRating)
@@ -37,7 +37,8 @@ export const bookpage = router.get('/book', async (req, res) => {
             booksCollection.findByIdAndUpdate({ _id: mongoose.Types.ObjectId(bookid) }, book, (err, book) => {
               if (book) {
                 booksData.book = book
-                console.log("going to render book page")
+                console.log("this is going to happen if ")
+                console.log(booksData)
                 return res.render('authpages/book', { book: booksData.book, reviews: booksData.reviews })
               }
               else {
@@ -57,6 +58,7 @@ export const bookpage = router.get('/book', async (req, res) => {
             booksCollection.findByIdAndUpdate({ _id: mongoose.Types.ObjectId(bookid) }, book, (err, book) => {
               if (book) {
                 booksData.book = book
+                console.log(booksData)
                 return res.render('authpages/book', { book: booksData.book, reviews: booksData.reviews })
               }
               else {
@@ -77,6 +79,7 @@ export const bookpage = router.get('/book', async (req, res) => {
       booksCollection.findById({ _id: bookid }, (err, book) => {
         if (book) {
           booksData.book = book
+          console.log()
           return res.render('authpages/book', { book: booksData.book, reviews: booksData.reviews })
         }
         else {
