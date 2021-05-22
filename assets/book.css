@@ -1,0 +1,594 @@
+* {
+    margin: 0;
+    padding: 0;
+  
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    color: black;
+  }
+  body {
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  /* Add a black background color to the top navigation */
+  .topnav {
+    background-color: rgb(175, 159, 134);
+    overflow: hidden;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  /* Add an active class to highlight the current page */
+  
+  /* Hide the link that should open and close the topnav on small screens */
+  .topnav .icon {
+    display: none;
+  }
+  
+  /* Dropdown container - needed to position the dropdown content */
+  .dropdown {
+    float: left;
+    overflow: hidden;
+  }
+  
+  /* Style the dropdown button to fit inside the topnav */
+  .dropdown .dropbtn {
+    font-size: 17px;
+    border: none;
+    outline: none;
+    color: black;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
+  
+  /* Style the dropdown content (hidden by default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  /* Style the links inside the dropdown */
+  .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  #dropdown-content-avatar {
+    transform: translateX(-90px);
+  }
+  
+  /* Add a dark background on topnav links and the dropdown button on hover */
+  .topnav a:hover,
+  .dropdown:hover .dropbtn {
+    background-color: #555;
+    color: white;
+  }
+  #nav-logo:hover {
+    background-color: rgb(175, 159, 134);
+  }
+  
+  /* Add a grey background to dropdown links on hover */
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  
+    color: black;
+  }
+  .add-btn {
+    background-color: transparent;
+    border: none;
+    outline: none;
+  }
+  #avatar {
+    float: right;
+    padding-right: 20px;
+  }
+  #avatar-icon {
+    color: rgb(58, 58, 58);
+    transform: scale(1.3);
+  }
+  /* Show the dropdown menu when the user moves the mouse over the dropdown button */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  #searchbox {
+    display: flex;
+    margin-top: 12px;
+    background-color: white;
+    margin-right: 20px;
+    padding: 4px 2px;
+    border: 1px solid rgb(110, 108, 104);
+    border-radius: 4px;
+    float: right;
+  }
+  #searchbox input {
+    border: none;
+    outline: none;
+    width: 300px;
+  }
+  
+  /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+  @media screen and (max-width: 600px) {
+    .topnav a:not(:first-child),
+    .dropdown .dropbtn {
+      display: none;
+    }
+    .topnav a.icon {
+      float: right;
+      display: block;
+    }
+    .topnav a.icon:hover {
+      background-color: transparent;
+    }
+    #searchbox {
+      float: left;
+    }
+    #searchbox input {
+      width: 150px;
+    }
+  }
+  
+  /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+  @media screen and (max-width: 600px) {
+    .topnav.responsive {
+      position: relative;
+    }
+    .topnav.responsive a.icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .topnav.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+    .topnav.responsive .dropdown {
+      float: none;
+    }
+    .topnav.responsive .dropdown-content {
+      position: relative;
+    }
+    .topnav.responsive .dropdown .dropbtn {
+      display: block;
+      width: 100%;
+      text-align: left;
+    }
+    #avatar {
+      display: none;
+    }
+  }
+  
+  #avatar {
+    float: right;
+    padding-right: 20px;
+  }
+  #avatar-icon {
+    color: rgb(58, 58, 58);
+    transform: scale(1.3);
+  }
+  
+  /*index*/
+  .index-wrapper {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(254, 255, 247);
+  }
+  .index {
+    width: 60%;
+    padding: 10px;
+    min-height: 100vh;
+    background-color: transparent;
+    display: flex !;
+    flex-direction: column;
+  }
+  .index h4 {
+    padding-bottom: 20px;
+    font-weight: 500;
+  }
+  
+  /*updates*/
+  .content {
+    background-color: transparent;
+    padding: 30px;
+    padding-bottom: 0px;
+  }
+  .content a {
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .book-content {
+    margin-left: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(209, 209, 209);
+  }
+  .book-content h2 {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 0 !important;
+  }
+  .book-content h4 {
+    padding-bottom: 2px;
+    margin-top: 0 !important;
+  }
+  .book-content p {
+    padding-top: 10px;
+    font-size: 15px;
+  }
+  
+  .show-read-more .more-text {
+    display: none;
+  }
+  .book-details {
+    display: flex;
+    width: 100%;
+  }
+  .book-img {
+    margin-top: 30px;
+  }
+  .book-img img {
+    width: 200px;
+  }
+  #book-content-dropdown {
+    background-color: rgb(39, 151, 39);
+    padding: 6px 20px;
+    color: white;
+  }
+  .book-links h5 {
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .book-links button {
+    margin-right: 10px;
+    width: 100px;
+    height: 40px;
+    border: 1px solid #c5b290;
+    border-radius: 3px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  .book-links button:hover {
+    background-color: #c2b9a8;
+  }
+  .comment-box {
+    margin-top: 12px;
+  
+    max-height: 150px;
+    overflow: scroll;
+  }
+  .comment-box::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+  .comment-box input {
+    border: none;
+    outline: none;
+    width: 100%;
+    background-color: rgba(197, 195, 195, 0.103);
+    padding: 12px 6px;
+  }
+  .comment-box p {
+    padding-top: 6px;
+    font-size: 12px;
+  }
+  .comment-box p span {
+    font-weight: bold;
+  }
+  
+  .comments span {
+    font-weight: bold;
+  }
+  .comments p {
+    font-size: small;
+    color: grey;
+  }
+  .comments {
+    margin-top: 12px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid gray;
+  }
+  .p-rated-it {
+    color: black !important;
+    font-size: small !important;
+    font-weight: lighter !important;
+    margin-left: 10px;
+  }
+  .rated-username {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgb(4, 68, 4);
+  }
+  /*rating*/
+  .rate-it {
+    height: 40px;
+  
+    display: flex;
+    align-content: center;
+  }
+  
+  .rating {
+    display: flex;
+    padding: 0;
+    margin: 0;
+  }
+  .rate-it {
+    display: block;
+    height: 60px;
+  }
+  .rating {
+    transform: translateY(-10px);
+  }
+  .rating li {
+    list-style-type: none;
+  }
+  .rating-item {
+    cursor: pointer;
+    font-size: 2rem;
+    color: rgb(255, 197, 6);
+    display: flex;
+    align-items: center;
+  }
+  /*initial:make all full*/
+  .rating-item::before {
+    content: "\2606";
+  }
+  .not-filled::before {
+    content: "\2605";
+  }
+  
+  /*make untill the cliicked star(the rest ) empty*/
+  .rating-item.active ~ .rating-item::before {
+    content: "\2606";
+  }
+  /*on hover make all full*/
+  .rating:hover .rating-item::before {
+    content: "\2605";
+  }
+  .rating-item:hover ~ .rating-item::before {
+    content: "\2606";
+  }
+  
+  /*rated section*/
+  .rated {
+    display: flex;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .rated li {
+    list-style-type: none;
+  }
+  
+  .rated-item {
+    border: 1px solid white;
+    cursor: pointer;
+    font-size: 2rem;
+    color: rgb(255, 166, 0);
+  }
+  
+  /*initial:make all full*/
+  .rated-item::before {
+    content: "\2606";
+  }
+  
+  .not-filled-rated::before {
+    content: "\2605";
+  }
+  
+  /*make untill the cliicked star(the rest ) empty*/
+  .rated-item.active ~ .rated-item::before {
+    content: "\2606";
+  }
+  .rated-wrapper {
+    display: flex;
+    align-items: center;
+  }
+  .rated-wrapper p {
+    padding: 0 !important;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .comments .rated-wrapper .rated-item {
+    transform: scale(0.7);
+    width: 16px;
+  }
+  
+  /*read more*/
+  .morecontent span {
+    display: none;
+  }
+  .morelink {
+    display: block;
+  }
+  
+  /*footer*/
+  .footer {
+    padding: 30px;
+  }
+  .footer-links {
+    display: flex;
+  }
+  .footer-links h4 {
+    font-size: 16px !important;
+  }
+  .footer-links div {
+    margin-right: 35px;
+  }
+  .footer ul {
+    margin-right: 20px;
+  }
+  .footer ul li {
+    display: block;
+    padding: 2px;
+  }
+  .footer ul li a {
+    text-decoration: none;
+  }
+  .footer-footer img {
+    margin-bottom: 10px;
+  }
+  .company,
+  .work-withus,
+  .footer-footer {
+    margin-bottom: 20px;
+  }
+  .res-nav {
+    display: none !important;
+  }
+  @media only screen and (max-width: 720px) {
+    .index-wrapper {
+    }
+    .index {
+      width: 100%;
+      padding: 10px;
+      min-height: 100vh;
+      background-color: transparent;
+      display: flex !;
+      flex-direction: column;
+    }
+    .index h4 {
+      padding-bottom: 20px;
+      font-weight: 500;
+    }
+    .content {
+      background-color: transparent;
+      padding: 30px;
+      padding-bottom: 0px;
+    }
+    .content a {
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .book-content {
+      margin-left: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgb(209, 209, 209);
+    }
+    .book-content h2 {
+      font-size: 25px;
+      font-weight: 600;
+      margin-bottom: 0 !important;
+    }
+    .book-content h4 {
+      font-size: 16px;
+      padding-bottom: 0px;
+    }
+    .book-content p {
+      padding-top: 6px;
+      font-size: 13px;
+    }
+  
+    .book-img img {
+      width: 110px;
+    }
+    .book-links button {
+      width: 60px;
+      font-size: 10px;
+      padding: 0;
+      height: 30px;
+    }
+    /*footer*/
+    .footer {
+      padding: 30px;
+    }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+    }
+    .footer-links h4 {
+      font-size: 16px !important;
+    }
+    .footer-links div {
+      margin-right: 35px;
+    }
+    .footer ul {
+      margin-right: 20px;
+    }
+    .footer ul li {
+      display: block;
+      padding: 2px;
+    }
+    .footer ul li a {
+      text-decoration: none;
+    }
+    .footer-footer img {
+      margin-bottom: 10px;
+    }
+    .company,
+    .work-withus,
+    .footer-footer {
+      margin-bottom: 20px;
+    }
+    .topnav.responsive .res-nav {
+      display: block !important;
+    }
+    .topnav.responsive #searchbox {
+      display: none;
+    }
+  }
+  
+  /*add-book form*/
+  .book-form {
+    overflow-y: scroll;
+  }
+  .book-form::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+  .book-form h1 {
+    text-align: center;
+  }
+  .book-form form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 30px 20px;
+  }
+  .book-form form input,
+  .book-form form textarea {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 12px;
+    padding: 6px 10px;
+    transition: background-color 0.3s ease-in-out;
+    outline: none;
+    border: 0.5px solid lightgray;
+  }
+  .book-form form textarea {
+    height: 150px;
+  }
+  .book-form form input:hover {
+    background-color: rgb(197, 197, 197);
+  }
+  .book-form form #submit-btn {
+    background-color: rgb(16, 165, 16);
+    color: white;
+    width: 200px;
+  }
+  .book-form form #submit-btn:hover {
+    background-color: rgb(5, 121, 5);
+  }
+  @media only screen and (max-width: 720px) {
+    .book-form form input,
+    .book-form form textarea {
+      width: 95%;
+    }
+  }

@@ -1,50 +1,97 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- CSS only -->
-   
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" />
     <!-- CSS only -->
-    
 
-    
 
-   
+
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" />
-    
-   
+
+
 
 </head>
+
 <body>
     {{{body}}}
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-        
-        $("#search-icon").click(function () {
-                $(".nav").toggleClass("search");
-                $(".nav").toggleClass("no-search");
-                $(".search-input").toggleClass("search-active");
-            });
 
-            $('.menu-toggle').click(function () {
-                $(".nav").toggleClass("mobile-nav");
-                $(this).toggleClass("is-active");
-            });
+        $("#search-icon").click(function () {
+            $(".nav").toggleClass("search");
+            $(".nav").toggleClass("no-search");
+            $(".search-input").toggleClass("search-active");
+        });
+
+        $('.menu-toggle').click(function () {
+            $(".nav").toggleClass("mobile-nav");
+            $(this).toggleClass("is-active");
+        });
 
     </script>
+    <script>
+        // get the modal
+        var modal2 = document.getElementById("myModal2");
+        var modal = document.getElementById("myModal");
 
 
-        
+        // get the button and add an eventlistener to display the modal on click
+        document.getElementById("myButton2").addEventListener("click", function () {
+
+            modal2.style.display = "block";
+
+        })
+
+        // get the span with the class of close and add an eventlistener to hide the modal on click
+        document.getElementsByClassName("close")[1].addEventListener("click", function () {
+            modal2.style.display = "none";
+        })
+
+
+        // get the window and add an eventlistener to close the modal on click anywhere in the window
+        window.addEventListener("click", function (event) {
+            if (event.target == modal) {
+                modal2.style.display = "none";
+            }
+        })
+
+
+        // get the modal
+        // get the button and add an eventlistener to display the modal on click
+        document.getElementById("signUp").addEventListener("click", function () {
+            console.log("button pressed")
+            modal.style.display = "block";
+        })
+
+        // get the span with the class of close and add an eventlistener to hide the modal on click
+        document.getElementsByClassName("close")[0].addEventListener("click", function () {
+            modal.style.display = "none";
+        })
+
+
+        // get the window and add an eventlistener to close the modal on click anywhere in the window
+        window.addEventListener("click", function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        })
+    </script>
 
 </body>
+
 </html>

@@ -1,0 +1,369 @@
+<head>
+    <link rel="stylesheet" href="../../assets/book.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" />
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+</head>
+
+
+<div class="topnav" id="myTopnav">
+    <a href="#home" id="nav-logo"><img src="https://images.gr-assets.com/doodles/1619806753i/30.svg" height="20px"
+            alt="Logo"></a>
+    <a href="#home">Home</a>
+    <a href="#news">My Books</a>
+
+    <div class="dropdown">
+        <button class="dropbtn">Browse
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="#">Horror</a>
+            <a href="#">Romance</a>
+            <a href="#">Thriller</a>
+        </div>
+    </div>
+
+
+    <div class="dropdown" id="avatar">
+
+        <button class="dropbtn"><i id='avatar-icon' class="fas fa-user-circle"></i>
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content" id="dropdown-content-avatar">
+            <a href="#"><button onclick="document.getElementById('id01').style.display='block'" class="add-btn"><i
+                        class="fas fa-plus"></i>Add Book</button></a>
+            <a href="home.html">Logout</a>
+
+        </div>
+    </div>
+    <div class="dropdown" id="searchbox">
+        <input type="text" placeholder="Search Book"><i class="fa fa-search"></i>
+    </div>
+    <a href="#" class="res-nav"><button onclick="document.getElementById('id01').style.display='block'"
+            class="w3-button w3-black">Add Book</button></a>
+    <a href="#" class="res-nav">Logout</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction2()"><i class="fas fa-bars"></i></a>
+
+
+</div>
+<div id="id01" class="w3-modal">
+    <div class="w3-modal-content">
+        <div class="w3-container">
+            <span onclick="document.getElementById('id01').style.display='none'"
+                class="w3-button w3-display-topright">&times;</span>
+            <div class="book-form">
+                <h1>Add Book</h1>
+                <form action="">
+                    <input type="text" required placeholder="IBN Number:">
+                    <input type="text" required placeholder="Book Title:">
+                    <input type="text" required name="" id="" placeholder="Author Name:">
+                    <input type="text" required name="" id="" placeholder="Language:">
+                    <input type="file" required>
+                    <textarea name="" id="" cols="30" rows="10" placeholder="Description:"></textarea>
+                    <input type="text" required name="" id="" placeholder="Link to purchase:">
+                    <input id="submit-btn" type="submit" value="Add">
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--index-->
+<div class="index-wrapper">
+    <div class="index">
+
+        <div class="updates">
+
+            <div class="content" onmouseover="rating(0)">
+
+
+                <div class="book-details">
+
+                    <div class="book-img">
+                        <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1597940104i/54332582._SY180_.jpg"
+                            alt="">
+                        <div class="rate-it">
+                            <p>Rate it:</p>
+                            <ul class="rating">
+                                <li class="rating-item" data-rate="1"></li>
+                                <li class="rating-item " data-rate="2"></li>
+                                <li class="rating-item" data-rate="3"></li>
+                                <li class="rating-item" data-rate="4"></li>
+                                <li class="rating-item" data-rate="5"></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="book-content">
+                        <h2>{{book.bookTitle}}</h2>
+                        <h4>by Sariah Wilson</h4>
+                        <select name="" id="book-content-dropdown">
+                            <option value="">Want to read</option>
+                        </select>
+                        <div class="rated-wrapper">
+                            <p>{{book.averageRating}}</p>
+                            <ul class="rated" data-rated='2'>
+                                <li class="rated-item"></li>
+                                <li class="rated-item "></li>
+                                <li class="rated-item"></li>
+                                <li class="rated-item"></li>
+                                <li class="rated-item"></li>
+                            </ul>
+                        </div>
+                        <p style="margin-top: 3px;padding-bottom:20px;border-bottom: 1px solid lightgray;" class="more">
+                            Be aware that a retired Juniper Customer Care phone
+                            number is being
+                            used
+                            fraudulently. Customers calling this number are offered a cash rebate in exchange for
+                            information,
+                            including Juniper
+                            contract ID, email address, and credit card number. Juniper is not associated with this
+                            rebate offer and
+                            has no
+                            relationship with the company offering it.<br />Juniper is working with the proper
+                            authorities in order
+                            to cease
+                            this inappropriate activity.<br />Please update your records with the correct Customer
+                            Care number:
+                            888-314-5822.
+                            Please also bookmark: </p>
+                        <div class="book-links">
+                            <h5>GET A COPY</h5>
+                            <button>Amazon IN</button><button>Flipkart</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+                <div class="comment-box">
+                    <input type="text" placeholder="Add a review...">
+
+                </div>
+
+
+
+
+                <div class="comments">
+                    <h5>COMMUNITY REVIEWS</h5>
+                    <div class="review-wrapper">
+
+                        <div class="rated-wrapper">
+                            <h5 class="rated-username">Anand</h5>
+                            <p class="p-rated-it">rated it</p>
+                            <ul class="rated" data-rated='2'>
+                                <li class="rated-item"></li>
+                                <li class="rated-item "></li>
+                                <li class="rated-item"></li>
+                                <li class="rated-item"></li>
+                                <li class="rated-item"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p>Be aware that a retired Juniper Customer Care phone number is being
+                        used
+                        fraudulently. Customers calling this number are offered a cash rebate in exchange for
+                        information,
+                        including Juniper</p>
+
+
+                    <div class="review-wrapper">
+
+                        <div class="rated-wrapper">
+                            <h5 class="rated-username">Anand</h5>
+                            <p class="p-rated-it">rated it</p>
+                            <ul class="rated" data-rated='2'>
+                                <li class="rated-item"></li>
+                                <li class="rated-item "></li>
+                                <li class="rated-item"></li>
+                                <li class="rated-item"></li>
+                                <li class="rated-item"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p>Be aware that a retired Juniper Customer Care phone number is being
+                        used
+                        fraudulently. Customers calling this number are offered a cash rebate in exchange for
+                        information,
+                        including Juniper</p>
+
+
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+        <div class="footer">
+            <div class="footer-links">
+                <div class="company">
+                    <h4>COMPANY</h4>
+                    <ul>
+                        <li><a href="">About Us</a></li>
+                        <li><a href="">Careers</a></li>
+                        <li><a href="">Terms</a></li>
+                        <li><a href="">Privacy</a></li>
+                    </ul>
+
+
+                </div>
+
+
+
+                <div class="work-withus">
+                    <h4>WORK WITHUS</h4>
+                    <ul>
+                        <li><a href="">About Us</a></li>
+                        <li><a href="">Careers</a></li>
+                        <li><a href="">Terms</a></li>
+                        <li><a href="">Privacy</a></li>
+                    </ul>
+
+
+
+
+                </div>
+                <div class="footer-footer">
+                    <h4>CONNECT</h4>
+                    <img src="https://s.gr-assets.com/assets/site_footer/footer_facebook-ea4ab848f8e86c5f5c98311bc9495a1b.svg"
+                        alt="">
+                    <img src="https://s.gr-assets.com/assets/site_footer/footer_twitter-126b3ee80481a763f7fccb06ca03053c.svg"
+                        alt="">
+                    <img src="https://s.gr-assets.com/assets/site_footer/footer_instagram-d59e3887020f12bcdb12e6c539579d85.svg"
+                        alt="">
+                    <img src="https://s.gr-assets.com/assets/site_footer/footer_linkedin-5b820f4703eff965672594ef4d10e33c.svg"
+                        alt="">
+
+                    <br>
+                    <img src="https://s.gr-assets.com/assets/app/badge-ios-desktop-homepage-6ac7ae16eabce57f6c855361656a7540.svg"
+                        alt="">
+
+                    <img src="https://s.gr-assets.com/assets/app/badge-android-desktop-home-0f517cbae4d56c88a128d27a7bea1118.png"
+                        alt="">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://www.juniper.net/assets/js/jquery/1.4/jquery-1.4.3.min.js"></script>
+<script>
+    /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+    function myFunction2() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+
+</script>
+<script>
+    $(document).ready(function () {
+        // Configure/customize these variables.
+        var showChar = 300;  // How many characters are shown by default
+        var ellipsestext = "";
+        var moretext = "Read More";
+        var lesstext = "Read Less";
+
+
+        $('.more').each(function () {
+            var content = $(this).html();
+
+            if (content.length > showChar) {
+
+                var c = content.substr(0, showChar);
+                var h = content.substr(showChar, content.length - showChar);
+
+                var html = c + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+
+                $(this).html(html);
+            }
+
+        });
+
+        $(".morelink").click(function () {
+
+            if ($(this).hasClass("less")) {
+                $(this).removeClass("less");
+
+                $(this).html(moretext);
+            } else {
+                $(this).addClass("less");
+
+                $(this).html(lesstext);
+            }
+            $(this).parent().prev().toggle();
+            $(this).prev().toggle();
+            return false;
+        });
+    });
+
+
+
+
+
+
+
+    /*star rating*/
+    function rating(num) {
+        const container = document.querySelectorAll('.rating')[num];
+        const items = container.querySelectorAll('.rating-item');
+
+        container.addEventListener('click', (e) => {
+
+
+            const eClass = e.target.classList;
+            items.forEach(
+                item => item.classList.add('not-filled')
+            );
+            if (!eClass.contains('active')) {
+                items.forEach(
+                    item => item.classList.remove('active')
+                );
+                console.log(e.target.getAttribute("data-rate"));
+                eClass.add("active");
+            }
+        })
+
+    }
+
+
+    /*star rated -from db*/
+    /*star rated*/
+    const containers = document.querySelectorAll('.rated');
+    var i;
+    for (i = 0; i < containers.length; i++) {
+        var rated = containers[i].getAttribute('data-rated');
+        const items = containers[i].querySelectorAll('.rated-item');
+        console.log(items[rated])
+        const eClass = items[rated - 1].classList;
+
+        console.log(eClass)
+        items.forEach(
+            item => item.classList.add('not-filled-rated')
+        );
+        eClass.add('active')
+
+
+    }
+
+
+
+
+</script>

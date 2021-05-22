@@ -4,253 +4,181 @@
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" />
 </head>
+<div id="Guest">
+    <header>
+        <img src="https://s.gr-assets.com/assets/home/header_logo-8d96d7078a3d63f9f31d92282fd67cf4.png" alt="">
+    </header>
+    <div class="home">
+        <img src="https://images.gr-assets.com/misc/1588007938-1588007938_goodreads_misc.png" alt="">
+    </div>
+    <div class="home-container">
+        <div class="home-content-left">
+            <div class="left-content-1">
+                <h4>Deciding what to read next?</h4>
 
-<body>
-    <div id="Guest">
-        <header>
-            <img src="https://s.gr-assets.com/assets/home/header_logo-8d96d7078a3d63f9f31d92282fd67cf4.png" alt="">
-        </header>
-        <div class="home">
-            <img src="https://images.gr-assets.com/misc/1588007938-1588007938_goodreads_misc.png" alt="">
-        </div>
-        <div class="home-container">
-            <div class="home-content-left">
-                <div class="left-content-1">
-                    <h4>Deciding what to read next?</h4>
-
-                    <p>You’re in the right place. Tell us what titles or genres you’ve enjoyed in the past, and we’ll
-                        give you surprisingly
-                        insightful recommendations.</p>
-                </div>
-                <div class="left-content-2">
-                    <h4>Deciding what to read next?</h4>
-
-                    <p>You’re in the right place. Tell us what titles or genres you’ve enjoyed in the past, and we’ll
-                        give you surprisingly
-                        insightful recommendations.</p>
-                </div>
-
+                <p>You’re in the right place. Tell us what titles or genres you’ve enjoyed in the past, and we’ll
+                    give you surprisingly
+                    insightful recommendations.</p>
             </div>
-            <div class='home-content-right'>
-                <div class="login">
-                    <h3 class="login-head">Discover & Read more</h3>
-                    <img src="http://goodereader.com/blog/wp-content/uploads/images/goodreads.jpg" alt="">
-                    <button id="myButton" class="sign-up-btn">Sign Up</button>
+            <div class="left-content-2">
+                <h4>Deciding what to read next?</h4>
 
-                    <div id="myModal" class="modal">
-                        <div class="modal-content">
-                            <span class="close">&times;</span>
-                            <div class="modal-form">
-                                <h3>Sign Up</h3>
-                                <form action="">
-                                    <div class="form-row">
-                                        <i class="fas fa-user-alt"></i><input type="text" placeholder="Name:">
-                                    </div>
-                                    <div class="form-row">
-                                        <i class="fas fa-envelope"></i><input type="text" placeholder="email:">
-                                    </div>
-                                    <div class="form-row">
-                                        <i class="fas fa-lock"></i> <input type="password" placeholder="Password:">
-                                    </div>
+                <p>You’re in the right place. Tell us what titles or genres you’ve enjoyed in the past, and we’ll
+                    give you surprisingly
+                    insightful recommendations.</p>
+            </div>
 
-                                    <input type="submit" class="home-signin " value="SignUp">
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <p>By creating an account, you agree to the Goodreads Terms of Service and Privacy Policy.</p>
-                    <h5>Already a member? <button id="myButton2">Sign in</button></h5>
+        </div>
+        <div class='home-content-right'>
+            <div class="login">
+                <h3 class="login-head">Discover & Read more</h3>
+                <img src="http://goodereader.com/blog/wp-content/uploads/images/goodreads.jpg" alt="">
+                <button id="signUp" class="sign-up-btn">Sign Up</button>
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <div class="modal-form">
+                            <h3>Sign Up</h3>
+                            <form method="POST" action="/auth/signup" enctype="multipart/form-data">
+                                <div class="form-row">
+                                    <i class="fas fa-user-alt"></i><input type="text" placeholder="Name:" name="name">
+                                </div>
+                                <div class="form-row">
+                                    <i class="fas fa-envelope"></i><input type="email" placeholder="email:"
+                                        name="email">
+                                </div>
+                                <div class="form-row">
+                                    <i class="fas fa-lock"></i> <input type="password" placeholder="Password:"
+                                        name="password">
+                                </div>
 
-
-                    <div id="myModal2" class="modal">
-                        <div class="modal-content">
-                            <span class="close">&times;</span>
-                            <div class="modal-form">
-                                <h3>Log In</h3>
-                                <form action="">
-                                    <div class="form-row">
-                                        <i class="fas fa-user-alt"></i><input type="text" placeholder="Username:">
-                                    </div>
-
-                                    <div class="form-row">
-                                        <i class="fas fa-lock"></i> <input type="password" placeholder="Password:">
-                                    </div>
-
-                                    <input type="submit" class="home-signin " value="LogIn">
-                                </form>
-                            </div>
+                                <input type="submit" class="home-signin" value="SignUp">
+                            </form>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+                <p>By creating an account, you agree to the Goodreads Terms of Service and Privacy Policy.</p>
+                <h5>Already a member? <button id="myButton2">Sign in</button></h5>
+                <div id="myModal2" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="handleclose()">&times;</span>
+                        <div class="modal-form">
+                            <h3>Log In</h3>
+                            <form method="POST" action="/auth/login" enctype="multipart/form-data">
+                                <div class="form-row">
+                                    <i class="fas fa-user-alt"></i><input name="email" type="email"
+                                        placeholder="Email:">
+                                </div>
 
+                                <div class="form-row">
+                                    <i class="fas fa-lock"></i> <input name="password" type="password"
+                                        placeholder="Password:">
+                                </div>
 
-        <div class="left-content-search">
-            <h2>Search and browse books</h2>
-
-
-            <div class="form-inline">
-                <div class="home-search" id="searchbox">
-                    <input placeholder="Genre/Author/Language" v-model="search" class="form-control">
-                    <button id="searchButton1" onclick="handleSearchGuest(app.search)"><i
-                            class="fa fa-search"></i></button>
+                                <input type="submit" class="home-signin " value="LogIn">
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="home-browse">
-                <ul>
-                    <li><a href="">Art</a></li>
-                    <li><a href="">Business</a></li>
-                    <li><a href="">Childrens</a></li>
-                    <li><a href="">Art</a></li>
-                    <li><a href="">Business</a></li>
-                    <li><a href="">Childrens</a></li>
-
-                </ul>
-                <ul>
-
-                    <li><a href="">Classic</a></li>
-                    <li><a href="">Fantacy</a></li>
-                    <li><a href="">Fiction</a></li>
-                    <li><a href="">Art</a></li>
-                    <li><a href="">Business</a></li>
-                    <li><a href="">Childrens</a></li>
-                </ul>
-                <ul>
-                    <li><a href="">Art</a></li>
-                    <li><a href="">Business</a></li>
-                    <li><a href="">Childrens</a></li>
-                    <li><a href="">Art</a></li>
-                    <li><a href="">Business</a></li>
-                    <li><a href="">Childrens</a></li>
-
-                </ul>
-            </div>
-        </div>
-
-
-        <div class="footer">
-            <div class="company">
-                <h4>COMPANY</h4>
-                <ul>
-                    <li><a href="">About Us</a></li>
-                    <li><a href="">Careers</a></li>
-                    <li><a href="">Terms</a></li>
-                    <li><a href="">Privacy</a></li>
-                </ul>
-
-
-            </div>
-            <div class="work-withus">
-                <h4>WORK WITHUS</h4>
-                <ul>
-                    <li><a href="">About Us</a></li>
-                    <li><a href="">Careers</a></li>
-                    <li><a href="">Terms</a></li>
-                    <li><a href="">Privacy</a></li>
-                </ul>
-
-
-
-
-            </div>
-
-
-            <div class="connect">
-                <h4>CONNECT</h4>
-                <img src="https://s.gr-assets.com/assets/site_footer/footer_facebook-ea4ab848f8e86c5f5c98311bc9495a1b.svg"
-                    alt="">
-                <img src="https://s.gr-assets.com/assets/site_footer/footer_twitter-126b3ee80481a763f7fccb06ca03053c.svg"
-                    alt="">
-                <img src="https://s.gr-assets.com/assets/site_footer/footer_instagram-d59e3887020f12bcdb12e6c539579d85.svg"
-                    alt="">
-                <img src="https://s.gr-assets.com/assets/site_footer/footer_linkedin-5b820f4703eff965672594ef4d10e33c.svg"
-                    alt="">
-
-                <br>
-                <img src="https://s.gr-assets.com/assets/app/badge-ios-desktop-homepage-6ac7ae16eabce57f6c855361656a7540.svg"
-                    alt="">
-
-                <img src="https://s.gr-assets.com/assets/app/badge-android-desktop-home-0f517cbae4d56c88a128d27a7bea1118.png"
-                    alt="">
-            </div>
-
-
         </div>
     </div>
-    <script>
-        // get the modal
-        var modal2 = document.getElementById("myModal2");
+    <div class="left-content-search">
+        <h2>Search and browse books</h2>
 
 
-        // get the button and add an eventlistener to display the modal on click
-        document.getElementById("myButton2").addEventListener("click", function () {
-            modal2.style.display = "block";
+        <div class="form-inline">
+            <div class="home-search" id="searchbox">
+                <input placeholder="Genre/Author/Language" v-model="search" class="form-control">
+                <button id="searchButton1" onclick="handleSearchGuest(app.search)"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+        <div class="home-browse">
+            <ul>
+                <li><a href="">Art</a></li>
+                <li><a href="">Business</a></li>
+                <li><a href="">Childrens</a></li>
+                <li><a href="">Art</a></li>
+                <li><a href="">Business</a></li>
+                <li><a href="">Childrens</a></li>
 
-        })
+            </ul>
+            <ul>
 
-        // get the span with the class of close and add an eventlistener to hide the modal on click
-        document.getElementsByClassName("close")[1].addEventListener("click", function () {
-            modal2.style.display = "none";
-        })
+                <li><a href="">Classic</a></li>
+                <li><a href="">Fantacy</a></li>
+                <li><a href="">Fiction</a></li>
+                <li><a href="">Art</a></li>
+                <li><a href="">Business</a></li>
+                <li><a href="">Childrens</a></li>
+            </ul>
+            <ul>
+                <li><a href="">Art</a></li>
+                <li><a href="">Business</a></li>
+                <li><a href="">Childrens</a></li>
+                <li><a href="">Art</a></li>
+                <li><a href="">Business</a></li>
+                <li><a href="">Childrens</a></li>
 
+            </ul>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="company">
+            <h4>COMPANY</h4>
+            <ul>
+                <li><a href="">About Us</a></li>
+                <li><a href="">Careers</a></li>
+                <li><a href="">Terms</a></li>
+                <li><a href="">Privacy</a></li>
+            </ul>
+        </div>
+        <div class="work-withus">
+            <h4>WORK WITHUS</h4>
+            <ul>
+                <li><a href="">About Us</a></li>
+                <li><a href="">Careers</a></li>
+                <li><a href="">Terms</a></li>
+                <li><a href="">Privacy</a></li>
+            </ul>
+        </div>
+        <div class="connect">
+            <h4>CONNECT</h4>
+            <img src="https://s.gr-assets.com/assets/site_footer/footer_facebook-ea4ab848f8e86c5f5c98311bc9495a1b.svg"
+                alt="">
+            <img src="https://s.gr-assets.com/assets/site_footer/footer_twitter-126b3ee80481a763f7fccb06ca03053c.svg"
+                alt="">
+            <img src="https://s.gr-assets.com/assets/site_footer/footer_instagram-d59e3887020f12bcdb12e6c539579d85.svg"
+                alt="">
+            <img src="https://s.gr-assets.com/assets/site_footer/footer_linkedin-5b820f4703eff965672594ef4d10e33c.svg"
+                alt="">
+            <br>
+            <img src="https://s.gr-assets.com/assets/app/badge-ios-desktop-homepage-6ac7ae16eabce57f6c855361656a7540.svg"
+                alt="">
 
-        // get the window and add an eventlistener to close the modal on click anywhere in the window
-        window.addEventListener("click", function (event) {
-            if (event.target == modal) {
-                modal2.style.display = "none";
-            }
-        })
-
-
-        // get the modal
-        var modal = document.getElementById("myModal");
-
-
-        // get the button and add an eventlistener to display the modal on click
-        document.getElementById("myButton").addEventListener("click", function () {
-            modal.style.display = "block";
-
-        })
-
-        // get the span with the class of close and add an eventlistener to hide the modal on click
-        document.getElementsByClassName("close")[0].addEventListener("click", function () {
-            modal.style.display = "none";
-        })
-
-
-        // get the window and add an eventlistener to close the modal on click anywhere in the window
-        window.addEventListener("click", function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        })
-
-    </script>
-
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios@0.19.2/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
-    <script>
+            <img src="https://s.gr-assets.com/assets/app/badge-android-desktop-home-0f517cbae4d56c88a128d27a7bea1118.png"
+                alt="">
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios@0.19.2/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>
     var app = new Vue({
         el: '#Guest',
         data: {
             booksData: [],
             search: "",
-
         },
         delimiters: ['${', '}'],
     })
 
-    </script>
-    <script>
+</script>
+<script>
     function handleSearchGuest(search) {
         console.log('button clicked')
-      
+
         console.log(search)
-        window.location=`/pages/guestlanding?search=${search}`
+        window.location = `/pages/guestlanding?search=${search}`
     }
-    </script>
-
-</body>
-
-</html>
+</script>

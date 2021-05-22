@@ -55,7 +55,8 @@ export const signUp = router.post('/signup', async (req, res) => {
                 console.log("user sucessfully registerd")
                 const token = createJwtToken(user.displayName)
                 console.log(token)
-                return res.redirect(`/pages/landing?user_id=${user._id}&name=${user.name}&email=${user.email}&jwtToken=${token}`)
+                res.locals = token
+                return res.redirect(`/pages/landing?jwtToken=${token}&user_id=${user._id}&name=${user.displayName}&email=${user.email}`)
             }
         }
         catch (err) {
@@ -67,13 +68,14 @@ export const signUp = router.post('/signup', async (req, res) => {
 })
 export const logIn = router.post('/login', async (req, res) => {
     console.log("at login")
+    console.log(req.body)
     try {
         const user = await userModal.findOne({ email: req.body.email });
         if (user) {
             const match = await bcrypt.compare(req.body.password, user.password);
             if (match) {
                 const token = createJwtToken(user.displayName)
-                return res.redirect(`/pages/landing?user_id=${user._id}&name=${user.name}&email=${user.email}&jwtToken=${token}`)
+                return res.redirect(`/pages/landing?user_id=${user._id}&name=${user.displayName}&email=${user.email}&jwtToken=${token}`)
             }
             else {
                 return res.status(404).send("Password doesn't match")
