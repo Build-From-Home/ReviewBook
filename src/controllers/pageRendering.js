@@ -20,13 +20,13 @@ export const bookpage = router.get('/book', async (req, res) => {
   console.log(bookid)
   var booksData = {}
   await reviewModal.find({ bookid: bookid }, (err, reviews) => {
-    if (reviews) {
+    if (!reviews.length === 0) {
       booksData.reviews = reviews
       //booksData.reviews = reviews.map(review => review.toJSON())
       const starReviews = reviews.filter(review => review.starRating)
       console.log(starReviews)
       var sumOfRatings = 0
-      if (!starReviews.length) {
+      if (starReviews) {
         starReviews.forEach((starReview) => {
           sumOfRatings = sumOfRatings + starReview.starRating
         })
@@ -74,6 +74,15 @@ export const bookpage = router.get('/book', async (req, res) => {
     else {
       console.log(err)
       booksData.reviews = []
+      booksCollection.findById({ _id: book }, (err, book) => {
+        if (book) {
+          booksData.book = book
+          return res.render('authpages/book', { book: booksData.book, reviews: booksData.reviews })
+        }
+        else {
+          console.log(err)
+        }
+      })
     }
   }).lean()
 })
