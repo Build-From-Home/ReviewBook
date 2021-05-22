@@ -30,7 +30,7 @@
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content" id="dropdown-content-avatar">
-                <a href="/pages/bookform?jwtToken={{@root.JWTTOKEN}}"><button
+                <a href="/pages/bookform?jwtToken={{@root.JWTTOKEN}}&name={{name}}&email={{email}}"><button
                         onclick="document.getElementById('id01').style.display='block'" class="add-btn"><i
                             class="fas fa-plus"></i>Add Book</button></a>
                 <a href="/pages/guest">Logout</a>
@@ -289,7 +289,7 @@
                 data.id = id;
                 data.name = name;
                 data.email = email;
-                axios.post(`{{#url}}api/rating{{/url}}`, data)
+                axios.post(`{{#url}}api/rating{{/url}}?jwtToken={{@root.JWTTOKEN}}`, data)
                     .then((res) => {
                         console.log(res)
                     })
@@ -304,7 +304,7 @@
                 data.id = id
                 data.name = this.name
                 data.email = this.email
-                axios.post(`{{#url}}api/comment{{/url}}`, data)
+                axios.post(`{{#url}}api/comment{{/url}}?jwtToken={{@root.JWTTOKEN}}`, data)
                     .then((res) => {
                         console.log(res)
                     })
@@ -322,7 +322,7 @@
         console.log('button clicked')
         app.booksData = []
         console.log(search)
-        axios.get(`{{#url}}api/booksapi{{/url}}?search=${search}`).then((res) => {
+        axios.get(`{{#url}}api/booksapi{{/url}}?search=${search}&jwtToken={{@root.JWTTOKEN}}`).then((res) => {
             app.booksData = res.data.booksData
             console.log(res.data.booksData)
         })
@@ -331,22 +331,15 @@
         console.log('button clicked')
         app.booksData = []
         console.log(searchLeft)
-        axios.get(`{{#url}}api/booksapi{{/url}}?searchLeft=${searchLeft}`).then((res) => {
+        axios.get(`{{#url}}api/booksapi{{/url}}?searchLeft=${searchLeft}&jwtToken={{@root.JWTTOKEN}}`).then((res) => {
             app.booksData = res.data.booksData
             console.log(res.data.booksData)
         })
     }
-    axios.get(`{{#url}}api/booksapi{{/url}}`)
+    axios.get(`{{#url}}api/booksapi{{/url}}?jwtToken={{@root.JWTTOKEN}}`)
         .then((res) => {
             app.booksData = res.data.booksData
             console.log(app.booksData)
-            //const contentData = document.getElementById("contentData")
-            //datas.forEach((data)=>{
-            //  document.createElement('p').innerHTML = 'Trending this week in one of your favorite genres,';
-            //contentData.appendChild('p').innerHTML=
-            //contentData.appendChild('a').innerHTML=data.genre;
-            // const pd = contentData.appendChild('div').className='book-details';
-            // pd.appendChild()
         })
         .catch((err) => {
             console.log(err)

@@ -5,8 +5,8 @@ import reviewModal from '../models/reviewSchema.js';
 import { authenticationMiddleware } from './authController.js';
 
 
-export const bookApi = router.get('/booksapi' ,authenticationMiddleware, async (req, res) => {
-
+export const bookApi = router.get('/booksapi', authenticationMiddleware, async (req, res) => {
+    console.log("reached booksapi")
     if (req.query.search) {
         console.log('search worked')
         const regex = new RegExp(escapeRegex(req.query.search), 'gi');
@@ -53,7 +53,7 @@ export const bookApi = router.get('/booksapi' ,authenticationMiddleware, async (
 
 
 })
-export const bookRating = router.post('/rating', async (req, res) => {
+export const bookRating = router.post('/rating', authenticationMiddleware, async (req, res) => {
     console.log("reached bookrating endpoint")
     console.log(req.body)
     reviewModal.findOne({ email: req.body.email }, (err, data) => {
@@ -73,7 +73,7 @@ export const bookRating = router.post('/rating', async (req, res) => {
         }
     })
 })
-export const bookComment = router.post('/comment', async (req, res) => {
+export const bookComment = router.post('/comment', authenticationMiddleware, async (req, res) => {
     console.log("reached book comment api")
     console.log(req.body)
     reviewModal.findOne({ email: req.body.email }, (err, data) => {
@@ -94,7 +94,7 @@ export const bookComment = router.post('/comment', async (req, res) => {
     })
 })
 
-export const noAuthBooks = router.get('/noauthbooks', async (req, res) => {
+export const noAuthBooks = router.get('/noauthbooks', authenticationMiddleware, async (req, res) => {
     console.log(req.query.search)
     const regex = new RegExp(escapeRegex(req.query.search), 'gi');
     booksCollection.find({ $or: [{ bookTitle: regex }, { genre: regex }, { authorName: regex }, { language: regex }] }, (err, data) => {

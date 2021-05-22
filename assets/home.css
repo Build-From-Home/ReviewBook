@@ -271,3 +271,134 @@
     color: blue;
     cursor: pointer;
   }
+
+  @media only screen and (max-width: 720px) {
+    .home-container {
+      display: block;
+    }
+    .home-content-right {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      transform: translateY(-500px);
+    }
+    .login {
+      margin-top: 25px;
+      height: 400px;
+    }
+  
+    .login img {
+      width: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+    .login .login-head {
+      font-size: 20px;
+    }
+    .login img {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  
+    .login p {
+      text-align: center;
+      margin-top: 10px;
+      padding-bottom: 10px;
+      color: gray;
+      font-size: 13px;
+      border-bottom: 1px lightgray solid;
+    }
+    .login h5 {
+      text-align: center;
+  
+      font-size: 15px;
+      margin-top: 20px;
+  
+      font-weight: lighter;
+      color: gray;
+    }
+    .left-content-search {
+      width: 80%;
+  
+      display: grid;
+      margin-left: auto;
+      margin-right: auto;
+  
+      padding-left: 20px;
+    }
+    .left-content-search h2 {
+      font-size: 25px;
+      font-weight: lighter;
+    }
+    .left-content-search .home-search {
+      width: 220px;
+      margin-top: 20px;
+      border: 1px solid lightgray;
+      padding: 6px 10px;
+      border-radius: 4px;
+    }
+    .left-content-search .home-search input {
+      width: 200px;
+      border: none;
+      outline: none;
+    }
+  
+    .home-browse {
+      display: flex;
+      width: 50%;
+      margin-top: 20px;
+      margin-bottom: 50px;
+    }
+    .home-browse li {
+      display: block;
+      padding-top: 10px;
+      margin-right: 80px;
+    }
+    .home-browse li a {
+      text-decoration: none;
+    }
+  
+    .left-content-search h2 {
+      font-size: 20px;
+    }
+    .left-content-search .home-search {
+      width: 220px;
+      margin-top: 20px;
+      border: 1px solid lightgray;
+      padding: 6px 10px;
+      border-radius: 4px;
+    }
+  
+    .home-browse li {
+      font-size: 14px;
+      display: block;
+      padding-top: 10px;
+      margin-right: 24px;
+    }
+ 
+    .footer {
+      background-color: rgb(236, 227, 213);
+      display: block;
+      justify-content: left;
+  
+      padding: 80px;
+      padding-top: 40px;
+    }
+    .footer div {
+      margin-right: 50px;
+      margin-bottom: 30px;
+    }
+    .footer div h4 {
+      font-weight: lighter;
+      margin-bottom: 15px;
+    }
+  
+    .footer li {
+      display: block;
+      margin-bottom: 10px;
+    }
+    .footer li a {
+      text-decoration: none;
+      color: black;
+    }
+  }

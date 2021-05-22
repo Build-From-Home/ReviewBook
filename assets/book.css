@@ -464,8 +464,7 @@
     display: none !important;
   }
   @media only screen and (max-width: 720px) {
-    .index-wrapper {
-    }
+  
     .index {
       width: 100%;
       padding: 10px;

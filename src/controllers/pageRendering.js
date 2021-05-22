@@ -99,12 +99,12 @@ export const noAuthPage = router.get('/guestlanding', (req, res) => {
   return res.render('guestLanding', { search })
 })
 export const bookForm = router.get('/bookform', authenticationMiddleware, (req, res, next) => {
-  const { jwtToken } = req.query
+  const { name, email, jwtToken } = req.query
   res.locals.JWTTOKEN = jwtToken
-  return res.render('authpages/bookform');
+  return res.render('authpages/bookform', { name: name, email: email });
 });
 export const addBook = router.post('/addbook', authenticationMiddleware, async (req, res) => {
-  const { jwtToken } = req.query
+  const { name, email, jwtToken } = req.query
   let image = req.files.Image
   let imageName = image.name
   image.mv('./assets/uploads/' + imageName, (err) => {
@@ -134,8 +134,8 @@ export const addBook = router.post('/addbook', authenticationMiddleware, async (
       console.log(err);
     } else {
       console.log('data has been saved to database');
-      res.locals=jwtToken
-      return res.render('authpages/landing')
+      res.locals = jwtToken
+      return res.render('authpages/landing', { name: name, email: email })
     }
   })
 })
