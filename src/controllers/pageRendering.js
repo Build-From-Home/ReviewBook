@@ -137,8 +137,8 @@ export const addBook = router.post('/addbook', authenticationMiddleware, async (
       console.log(err);
     } else {
       console.log('data has been saved to database');
+      return res.render('authpages/landing', { name: name, email: email })
     }
-    return res.render('authpages/landing', { name: name, email: email })
   })
 })
 
