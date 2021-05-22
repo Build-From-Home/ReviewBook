@@ -6,6 +6,7 @@ import fileUpload from 'express-fileupload'
 import { authController } from "./controllers/authController.js";
 import { pageRendering } from "./controllers/pageRendering.js";
 import { frontendApi } from "./controllers/frontendApi.js";
+import { helperFunctions } from '../src/utils/handlebarsHelpers.js';
 
 
 const STATIC_PATH = "assets";
@@ -15,6 +16,7 @@ app.engine(
     "handlebars",
     exhbs.create({
         partialsDir: 'views/partials',
+        helpers: helperFunctions,
     }).engine);
 app.set("view engine", "handlebars");
 
@@ -36,14 +38,14 @@ mongoose.connect(connectionUrl, {
     .catch((err) => {
         console.log(err)
     })
-export const home = app.get("/", async (req, res) => {  
+export const home = app.get("/", async (req, res) => {
     return res.render('guest')
 });
 
 
 app.use('/auth', authController);
 app.use('/pages', pageRendering);
-app.use('/api',frontendApi);
+app.use('/api', frontendApi);
 
 app.listen(process.env.PORT, () => {
     console.log(`Listening to Port Number:${process.env.PORT}` + " " + `http://localhost:${process.env.PORT}`)

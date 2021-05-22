@@ -286,7 +286,7 @@
                 data.id = id;
                 data.name = name;
                 data.email = email;
-                axios.post('http://localhost:8080/api/rating', data)
+                axios.post(`{{#url}}api/rating{{/url}}`, data)
                     .then((res) => {
                         console.log(res)
                     })
@@ -300,7 +300,7 @@
                 data.id = id
                 data.name = this.name
                 data.email = this.email
-                axios.post('http://localhost:8080/api/comment', data)
+                axios.post(`{{#url}}api/comment{{/url}}`, data)
                     .then((res) => {
                         console.log(res)
                     })
@@ -318,7 +318,7 @@
         console.log('button clicked')
         app.booksData = []
         console.log(search)
-        axios.get(`http://localhost:8080/api/booksapi?search=${search}`).then((res) => {
+        axios.get(`{{#url}}api/booksapi{{/url}}?search=${search}`).then((res) => {
             app.booksData = res.data.booksData
             console.log(res.data.booksData)
         })
@@ -327,12 +327,12 @@
         console.log('button clicked')
         app.booksData = []
         console.log(searchLeft)
-        axios.get(`http://localhost:8080/api/booksapi?searchLeft=${searchLeft}`).then((res) => {
+        axios.get(`{{#url}}api/booksapi{{/url}}?searchLeft=${searchLeft}`).then((res) => {
             app.booksData = res.data.booksData
             console.log(res.data.booksData)
         })
     }
-    axios.get('http://localhost:8080/api/booksapi')
+    axios.get(`{{#url}}api/booksapi{{/url}}`)
         .then((res) => {
             app.booksData = res.data.booksData
             console.log(app.booksData)
