@@ -51,7 +51,6 @@ export const bookpage = router.get('/book', async (req, res) => {
         }).lean()
       }
       else {
-        console.log("reaches here if there is no star reviews collection")
         booksCollection.findById({ _id: mongoose.Types.ObjectId(bookid) }, (err, book) => {
           if (book) {
             book.averageRating = 0;
@@ -75,7 +74,7 @@ export const bookpage = router.get('/book', async (req, res) => {
       console.log("reached this part because of no rating or comments")
       console.log(err)
       booksData.reviews = []
-      booksCollection.findById({ _id: book }, (err, book) => {
+      booksCollection.findById({ _id: bookid }, (err, book) => {
         if (book) {
           booksData.book = book
           return res.render('authpages/book', { book: booksData.book, reviews: booksData.reviews })
@@ -84,7 +83,7 @@ export const bookpage = router.get('/book', async (req, res) => {
           console.log(err);
           return res.status(404).send('Internal server error')
         }
-      })
+      }).lean()
     }
   }).lean()
 })
