@@ -3,6 +3,7 @@ import { authenticationMiddleware } from './authController.js';
 import booksCollection from '../models/booksCollection.js';
 import reviewModal from '../models/reviewSchema.js';
 import mongoose from 'mongoose';
+import { basePath } from '../utils/config.js';
 
 mongoose.set('useFindAndModify', false);
 const router = express.Router();
@@ -25,7 +26,7 @@ export const bookpage = router.get('/book', async (req, res) => {
       const starReviews = reviews.filter(review => review.starRating)
       console.log(starReviews)
       var sumOfRatings = 0
-      if (starReviews) {
+      if (!starReviews.length) {
         starReviews.forEach((starReview) => {
           sumOfRatings = sumOfRatings + starReview.starRating
         })
@@ -50,6 +51,7 @@ export const bookpage = router.get('/book', async (req, res) => {
         }).lean()
       }
       else {
+        console.log("reaches here if there is no star reviews collection")
         booksCollection.findById({ _id: mongoose.Types.ObjectId(bookid) }, (err, book) => {
           if (book) {
             book.averageRating = 0;
@@ -110,7 +112,7 @@ export const addBook = router.post('/addbook', async (req, res) => {
     bookTitle: req.body.Title,
     authorName: req.body.Autor,
     language: req.body.Language,
-    coverImage: `http://localhost:8080/assets/uploads/${req.files.Image.name}`,
+    coverImage: `${basePath}/assets/uploads/${req.files.Image.name}`,
     description: req.body.Description,
     linkToFlipkart: req.body.LinkFlipkart,
     linkToAmazon: req.body.LinkAmazon,

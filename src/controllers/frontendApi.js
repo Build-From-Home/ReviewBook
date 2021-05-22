@@ -110,7 +110,7 @@ export const noAuthBooks = router.get('/noauthbooks', async (req, res) => {
 })
 
 function escapeRegex(text) {
-    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+    return text.replace('/[-[\]{}()*+?.,\\^$|#\s]/g', "\\$&");
 };
 
 export const frontendApi = router
