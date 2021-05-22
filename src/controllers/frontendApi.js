@@ -73,6 +73,7 @@ export const bookRating = router.post('/rating', async (req, res) => {
     })
 })
 export const bookComment = router.post('/comment', async (req, res) => {
+    console.log("reached book comment api")
     console.log(req.body)
     reviewModal.findOne({ email: req.body.email }, (err, data) => {
         if (data) {

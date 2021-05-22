@@ -70,8 +70,8 @@
                 <div class="book-details">
 
                     <div class="book-img">
-                        <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1597940104i/54332582._SY180_.jpg"
-                            alt="">
+                        <a href="">{{book.genre}}</a>
+                        <img src="{{book.coverImage}}" alt="">
                         <div class="rate-it">
                             <p>Rate it:</p>
                             <ul class="rating">
@@ -109,6 +109,11 @@
                             <a href="{{book.linkToFlipkart}}"><button>Flipkart</button></a>
 
                         </div>
+                        <div class="book-details2">
+                            <p>Language <span>{{book.language}}</span></p>
+                            <p>published <span>{{book.yearOfPublication}}</span></p>
+                            <p>IBN no: <span>{{book.IbnNo}}</span></p>
+                        </div>
 
                     </div>
 
@@ -124,15 +129,15 @@
 
 
 
-
+                {{#each reviews}}
                 <div class="comments">
                     <h5>COMMUNITY REVIEWS</h5>
                     <div class="review-wrapper">
 
                         <div class="rated-wrapper">
-                            <h5 class="rated-username">{{reviews.user}}</h5>
+                            <h5 class="rated-username">{{this.user}}</h5>
                             <p class="p-rated-it">rated it</p>
-                            <ul class="rated" data-rated='{{reviews.starRating}}'>
+                            <ul class="rated" data-rated='{{this.starRating}}'>
                                 <li class="rated-item"></li>
                                 <li class="rated-item "></li>
                                 <li class="rated-item"></li>
@@ -141,7 +146,7 @@
                             </ul>
                         </div>
                     </div>
-                    <p>{{reviews.comment}}</p>
+                    <p>{{this.comment}}</p>
 
 
                     <div class="review-wrapper">
@@ -166,6 +171,7 @@
 
 
                 </div>
+                {{/each}}
 
             </div>
 

@@ -281,6 +281,7 @@
                 });
             },
             starRating: function (rating, id, name, email) {
+                console.log("pressed star button")
                 console.log(rating)
                 const data = {}
                 data.rating = rating;
@@ -296,6 +297,7 @@
                     })
             },
             submitcomment: function (id) {
+                console.log("pressed post button")
                 const data = {}
                 data.comment = this.comment
                 data.id = id

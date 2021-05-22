@@ -256,6 +256,17 @@
     font-size: 13px;
     font-weight: 500;
   }
+  .book-links {
+    border-bottom: 1px solid rgb(209, 209, 209);
+    padding-bottom: 20px;
+  }
+  .book-details2 p {
+    font-size: 12px;
+    color: gray;
+  }
+  .book-details2 p span {
+    color: black;
+  }
   .book-links button {
     margin-right: 10px;
     width: 100px;
