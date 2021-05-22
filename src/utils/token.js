@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import JWTSECRET from './config.js';
+import { JWTSECRET } from './config.js';
 
 
 export const createJwtToken = function (displayName) {

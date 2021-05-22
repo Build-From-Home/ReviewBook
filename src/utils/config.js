@@ -1,1 +1,1 @@
-export const JWTSECRET="mykey"
+export const JWTSECRET = "mykey"
