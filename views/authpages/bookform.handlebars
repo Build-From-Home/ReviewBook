@@ -11,31 +11,26 @@
     <link rel="stylesheet" href="../../assets/bookform.css">
 </head>
 <section>
-    {{!-- <div id="id01" class="w3-modal"> --}}
-        <div class="w3-modal-content">
-            <div class="w3-container">
-                {{!-- <span onclick="document.getElementById('id01').style.display='none'"
-                    class="w3-button w3-display-topright">&times;</span> --}}
-                <div class="book-form">
-                    <h1>Add Book</h1>
-                    <form action="/pages/addbook?jwtToken={{@root.JWTTOKEN}}&user={{name}}&email={{email}}" method="POST"
-                        enctype="multipart/form-data">
-                        <input type="text" required name="IBN" placeholder="IBN Number:">
-                        <input type="text" required name="Title" placeholder="Book Title:">
-                        <input type="text" required name="Autor" name="" id="" placeholder="Author Name:">
-                        <input type="text" required name="Language" id="" placeholder="Language:">
-                        <input type="file" required name="Image">
-                        <textarea name="Description" id="" cols="30" rows="10" placeholder="Description:"></textarea>
-                        <input type="text" required name="LinkFlipkart" id="" placeholder="Link to flipkart:">
-                        <input type="text" required name="LinkAmazon" id="" placeholder="Link to amazon:">
-                        <input type="text" required name="Year" placeholder="Year of Publication:">
-                        <input type="text" required name="Genre" placeholder="Genre:">
-                        <input id="submit-btn" type="submit" value="Add">
+    <div class="w3-modal-content">
+        <div class="w3-container">
+            <div class="book-form">
+                <h1>Add Book</h1>
+                <form action="{{#url}}/pages/addbook{{/url}}?jwtToken={{@root.JWTTOKEN}}&user={{name}}&email={{email}}"
+                    method="POST" enctype="multipart/form-data">
+                    <input type="text" required name="IBN" placeholder="IBN Number:">
+                    <input type="text" required name="Title" placeholder="Book Title:">
+                    <input type="text" required name="Autor" name="" id="" placeholder="Author Name:">
+                    <input type="text" required name="Language" id="" placeholder="Language:">
+                    <input type="file" required name="Image">
+                    <textarea name="Description" id="" cols="30" rows="10" placeholder="Description:"></textarea>
+                    <input type="text" required name="LinkFlipkart" id="" placeholder="Link to flipkart:">
+                    <input type="text" required name="LinkAmazon" id="" placeholder="Link to amazon:">
+                    <input type="text" required name="Year" placeholder="Year of Publication:">
+                    <input type="text" required name="Genre" placeholder="Genre:">
+                    <input id="submit-btn" type="submit" value="Add">
 
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
-        {{!--
-    </div> --}}
+    </div>
 </section>
