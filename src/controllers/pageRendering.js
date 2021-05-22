@@ -138,10 +138,8 @@ export const addBook = router.post('/addbook', authenticationMiddleware, async (
     } else {
       console.log('data has been saved to database');
     }
+    return res.render('authpages/landing', { name: name, email: email })
   })
-  res.locals = jwtToken
-  console.log(jwtToken)
-  return res.render('authpages/landing', { name: name, email: email })
 })
 
 
