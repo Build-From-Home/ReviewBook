@@ -72,6 +72,7 @@ export const bookpage = router.get('/book', async (req, res) => {
       }
     }
     else {
+      console.log("reached this part because of no rating or comments")
       console.log(err)
       booksData.reviews = []
       booksCollection.findById({ _id: book }, (err, book) => {
@@ -80,7 +81,8 @@ export const bookpage = router.get('/book', async (req, res) => {
           return res.render('authpages/book', { book: booksData.book, reviews: booksData.reviews })
         }
         else {
-          console.log(err)
+          console.log(err);
+          return res.status(404).send('Internal server error')
         }
       })
     }
