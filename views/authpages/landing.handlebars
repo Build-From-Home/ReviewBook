@@ -246,6 +246,7 @@
                 const container = document.querySelectorAll('.rating')[num];
                 const items = container.querySelectorAll('.rating-item');
                 container.addEventListener('click', (e) => {
+                    
 
                     const eClass = e.target.classList;
                     items.forEach(
@@ -258,6 +259,7 @@
                         console.log(e.target.getAttribute("data-rate"));
                         this.starRating(e.target.getAttribute("data-rate"), id, name, email)
                         eClass.add("active");
+                        document.querySelectorAll('.rating-item .active').style.backgroundcolor="transparent !important";
                     }
                 });
             },
