@@ -11,6 +11,7 @@ const router = express.Router();
 export const landingPage = router.get('/landing', authenticationMiddleware, (req, res) => {
   console.log("returned to landing page")
   const { name, email, jwtToken } = req.query
+  console.log(name)
   res.locals.JWTTOKEN = jwtToken
   return res.render('authpages/landing', { name: name, email: email })
 })
@@ -108,6 +109,7 @@ export const bookForm = router.get('/bookform', authenticationMiddleware, (req, 
 });
 export const addBook = router.post('/addbook', authenticationMiddleware, async (req, res) => {
   const { name, email, jwtToken } = req.query
+  console.log("adding book and the name of the person added the book", name)
   let image = req.files.Image
   let imageName = image.name
   image.mv('./assets/uploads/' + imageName, (err) => {

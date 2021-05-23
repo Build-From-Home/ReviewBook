@@ -15,10 +15,8 @@ export const authenticationMiddleware = async (req, res, next) => {
     }
     try {
         const displayName = await verifyJwtToken(jwtToken)
-        console.log(displayName)
         if (displayName) {
             req.user = displayName;
-            console.log(req.user)
             next();
         }
         else {
