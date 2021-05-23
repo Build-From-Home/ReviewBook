@@ -92,6 +92,8 @@
                         </select>
                         <div class="rated-wrapper">
                             <p>{{book.averageRating}}</p>
+                            <p>aaaa</p>
+                            <p>{{Math.round((book.averageRating + Number.EPSILON) * 100) / 100}}</p> 
                             <ul class="rated" data-rated='{{book.averageRating}}'>
                                 <li class="rated-item"></li>
                                 <li class="rated-item "></li>
