@@ -128,8 +128,8 @@
 
 
                         <div class="comment-box">
-                            <input id="InputID" type="text" v-model="comment" placeholder="Add a review...">
-                            <button v-on:click="submitcomment(data._id)">post</button>
+                            <input id="InputID" type="text" v-model="comment[index]" placeholder="Add a review...">
+                            <button v-on:click="submitcomment(data._id,index)">post</button>
 
                         </div>
                         <div class="comments">
@@ -297,11 +297,11 @@
                         console.log(err)
                     })
             },
-            submitcomment: function (id) {
+            submitcomment: function (id, index) {
                 console.log("pressed post button")
                 const data = {}
-                data.comment = this.comment
-                this.comment = ""
+                data.comment = this.comment[index]
+                this.comment[index] = ""
                 data.id = id
                 data.name = this.name
                 data.email = this.email
