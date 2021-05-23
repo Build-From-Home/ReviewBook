@@ -8,28 +8,15 @@
         <a href="#home" id="nav-logo"><img src="https://images.gr-assets.com/doodles/1619806753i/30.svg" height="20px"
                 alt="Logo"></a>
         <a href="#home">Home</a>
-        <a href="#news">My Books</a>
-
-        <div class="dropdown">
-            <button class="dropbtn">Browse
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="#">Horror</a>
-                <a href="#">Romance</a>
-                <a href="#">Thriller</a>
-            </div>
-        </div>
-
-
         <div class="dropdown" id="avatar">
-            {{#if name}}
-            <h2>{{name}}</h2>
-            {{/if}}
+            
             <button class="dropbtn"><i id='avatar-icon' class="fas fa-user-circle"></i>
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content" id="dropdown-content-avatar">
+                {{#if name}}
+                <h2>{{name}}</h2>
+                {{/if}}
                 <a href="/pages/bookform?jwtToken={{@root.JWTTOKEN}}&name={{name}}&email={{email}}"><button
                         onclick="document.getElementById('id01').style.display='block'" class="add-btn"><i
                             class="fas fa-plus"></i>Add Book</button></a>
