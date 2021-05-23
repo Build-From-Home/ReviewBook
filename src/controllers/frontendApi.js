@@ -76,7 +76,7 @@ export const bookRating = router.post('/rating', authenticationMiddleware, async
 export const bookComment = router.post('/comment', authenticationMiddleware, async (req, res) => {
     console.log("reached book comment api")
     console.log(req.body)
-    reviewModal.findOne({ email: req.body.email }, (err, data) => {
+    reviewModal.findOne({ bookid:req.body.id,email: req.body.email }, (err, data) => {
         if (data) {
             data.comment = req.body.comment,
                 data.save()

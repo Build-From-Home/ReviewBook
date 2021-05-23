@@ -288,6 +288,10 @@ body {
   width: 200px;
   object-fit: contain;
 }
+.book-img img {
+  width: 200px;
+  object-fit: contain;
+}
 #book-content-dropdown {
   background-color: rgb(39, 151, 39);
   padding: 6px 20px;
