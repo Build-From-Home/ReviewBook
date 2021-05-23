@@ -21,7 +21,7 @@ export const bookpage = router.get('/book', authenticationMiddleware, async (req
   console.log(bookid)
   var booksData = {}
   await reviewModal.find({ bookid: bookid }, (err, reviews) => {
-    if (!reviews.length === 0) {
+    if (reviews.length > 0) {
       console.log("reached here because of review collection")
       booksData.reviews = reviews
       //booksData.reviews = reviews.map(review => review.toJSON())
