@@ -69,9 +69,9 @@
 
                 <div class="book-details">
 
-                    <div class="book-img" onerror="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT19lDKvZr_fHKFKs6g_VzKkm0VPoqfGk7GV9wR0mwdERms193A38KfSp-7q2rO9Ial6yA&usqp=CAU">
+                    <div class="book-img" >
                         <a href="">{{book.genre}}</a>
-                        <img src="{{book.coverImage}}" alt="">
+                        <img src="{{book.coverImage}}" onerror="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT19lDKvZr_fHKFKs6g_VzKkm0VPoqfGk7GV9wR0mwdERms193A38KfSp-7q2rO9Ial6yA&usqp=CAU">
                         <div class="rate-it">
                             <p>Rate it:</p>
                             <ul class="rating">
@@ -87,9 +87,7 @@
                     <div class="book-content">
                         <h2>{{book.bookTitle}}</h2>
                         <h4>{{book.authorName}}</h4>
-                        <select name="" id="book-content-dropdown">
-                            <option value="">Want to read</option>
-                        </select>
+                        
                         <div class="rated-wrapper">
                             <p>{{book.averageRating}}</p>
                             
