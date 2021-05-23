@@ -28,7 +28,7 @@ export const bookpage = router.get('/book', authenticationMiddleware, async (req
       const starReviews = reviews.filter(review => review.starRating)
       console.log(starReviews)
       var sumOfRatings = 0
-      if (!starReviews.length === 0) {
+      if (starReviews.length > 0) {
         console.log("reached here because of starreviews in reviews collections")
         starReviews.forEach((starReview) => {
           sumOfRatings = sumOfRatings + starReview.starRating
