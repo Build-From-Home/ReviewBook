@@ -87,15 +87,18 @@
                             </div>
 
                             <div class="book-content">
-                                <a :href="'/pages/book?bookid=' + data._id + '&jwtToken={{@root.JWTTOKEN}}'">
-                                    <h2>${data.bookTitle}</h2>
-                                </a>
+                                <h2>${data.bookTitle}</h2>
+                                
 
 
                                 <h4>by ${data.authorName}</h4>
-                                <select name="" id=" book-content-dropdown">
-                                    <option value="">Want to read</option>
-                                </select>
+                                <a :href="'/pages/book?bookid=' + data._id + '&jwtToken={{@root.JWTTOKEN}}'">
+                                 <button name="" id=" book-content-dropdown">
+                                    Want to read
+                                 </button>
+                                    
+                                </a>
+                               
                                 <div class="rate-it">
                                     <p>Rate it:</p>
                                     <ul class="rating">
@@ -259,7 +262,7 @@
                         console.log(e.target.getAttribute("data-rate"));
                         this.starRating(e.target.getAttribute("data-rate"), id, name, email)
                         eClass.add("active");
-                        document.querySelector('.active').style.backgroundColor="transparent !important";
+                       
                         console.log(document.querySelector('.active'));
                     }
                 });
