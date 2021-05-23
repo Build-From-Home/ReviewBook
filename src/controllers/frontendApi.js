@@ -56,7 +56,7 @@ export const bookApi = router.get('/booksapi', authenticationMiddleware, async (
 export const bookRating = router.post('/rating', authenticationMiddleware, async (req, res) => {
     console.log("reached bookrating endpoint")
     console.log(req.body)
-    reviewModal.findOne({ email: req.body.email }, (err, data) => {
+    reviewModal.findOne({ bookid:req.body.id, email: req.body.email }, (err, data) => {
         if (data) {
             data.starRating = req.body.rating,
                 data.save()
