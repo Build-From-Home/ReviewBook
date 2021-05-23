@@ -259,8 +259,8 @@
                         console.log(e.target.getAttribute("data-rate"));
                         this.starRating(e.target.getAttribute("data-rate"), id, name, email)
                         eClass.add("active");
-                       // document.querySelectorAll('.rating-item .active').style.backgroundColor="transparent !important";
-                        console.log(document.querySelectorAll('.rating-item .active'));
+                        document.querySelector('.active').style.backgroundColor="transparent !important";
+                        console.log(document.querySelector('.active'));
                     }
                 });
             },
