@@ -83,7 +83,7 @@
                         <div class="book-details">
 
                             <div class="book-img">
-                                <img v-bind:src="data.coverImage" alt="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT19lDKvZr_fHKFKs6g_VzKkm0VPoqfGk7GV9wR0mwdERms193A38KfSp-7q2rO9Ial6yA&usqp=CAU">
+                                <img v-bind:src="data.coverImage" onerror="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT19lDKvZr_fHKFKs6g_VzKkm0VPoqfGk7GV9wR0mwdERms193A38KfSp-7q2rO9Ial6yA&usqp=CAU">
                             </div>
 
                             <div class="book-content">
@@ -93,7 +93,7 @@
 
                                 <h4>by ${data.authorName}</h4>
                                 <a :href="'/pages/book?bookid=' + data._id + '&jwtToken={{@root.JWTTOKEN}}'">
-                                 <button name="" id=" book-content-dropdown" style="font-size: small;border:1px solid rgb(3, 77, 15) ;outline:none;background-color:rgb(8, 185, 8);color:white;padding:6px 12px">
+                                 <button name="" id=" book-content-dropdown" style="font-size: small;font-weight:normal !important;outline:none;background-color: rgb(39, 151, 39);color:white;padding:6px 12px">
                                     Details
                                  </button>
                                     
