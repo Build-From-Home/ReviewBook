@@ -92,7 +92,7 @@
                         </select>
                         <div class="rated-wrapper">
                             <p>{{book.averageRating}}</p>
-                            <ul class="rated" data-rated='2'>
+                            <ul class="rated" data-rated='{{book.averageRating}}'>
                                 <li class="rated-item"></li>
                                 <li class="rated-item "></li>
                                 <li class="rated-item"></li>
@@ -128,10 +128,10 @@
                 </div>
 
 
-
+                <h5>COMMUNITY REVIEWS</h5>
                 {{#each reviews}}
                 <div class="comments">
-                    <h5>COMMUNITY REVIEWS</h5>
+                    
                     <div class="review-wrapper">
 
                         <div class="rated-wrapper">
