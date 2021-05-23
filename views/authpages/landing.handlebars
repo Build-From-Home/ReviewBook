@@ -93,8 +93,8 @@
 
                                 <h4>by ${data.authorName}</h4>
                                 <a :href="'/pages/book?bookid=' + data._id + '&jwtToken={{@root.JWTTOKEN}}'">
-                                 <button name="" id=" book-content-dropdown">
-                                    Want to read
+                                 <button name="" id=" book-content-dropdown" style="font-size: small;border:none;outline:none;background-color:rgb(8, 185, 8)">
+                                    details
                                  </button>
                                     
                                 </a>
@@ -262,6 +262,7 @@
                         console.log(e.target.getAttribute("data-rate"));
                         this.starRating(e.target.getAttribute("data-rate"), id, name, email)
                         eClass.add("active");
+                        document.querySelector('.active').style.backgroundColor='transparent !important';
                        
                         console.log(document.querySelector('.active'));
                     }
