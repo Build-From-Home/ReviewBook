@@ -10,9 +10,9 @@ const router = express.Router();
 
 export const landingPage = router.get('/landing', authenticationMiddleware, (req, res) => {
   console.log("returned to landing page")
-  const { user_id, name, email, jwtToken } = req.query
+  const { name, email, jwtToken } = req.query
   res.locals.JWTTOKEN = jwtToken
-  return res.render('authpages/landing', { user_id: user_id, name: name, email: email })
+  return res.render('authpages/landing', { name: name, email: email })
 })
 export const bookpage = router.get('/book', authenticationMiddleware, async (req, res) => {
   console.log("at book endpoint")
@@ -137,7 +137,7 @@ export const addBook = router.post('/addbook', authenticationMiddleware, async (
       console.log(err);
     } else {
       console.log('data has been saved to database');
-      return res.render('authpages/landing', { name: name, email: email })
+      return res.redirect(`/pages/landing?jwtToken=${jwtToken}&name=${name}&email=${email}`)
     }
   })
 })
