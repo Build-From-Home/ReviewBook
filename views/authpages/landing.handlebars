@@ -15,7 +15,7 @@
             </button>
             <div class="dropdown-content" id="dropdown-content-avatar">
                 {{#if name}}
-                <h5>{{name}}</h5>
+                <a>{{name}}</a>
                 {{/if}}
                 <a href="/pages/bookform?jwtToken={{@root.JWTTOKEN}}&name={{name}}&email={{email}}"><button
                         onclick="document.getElementById('id01').style.display='block'" class="add-btn"><i
@@ -93,8 +93,8 @@
 
                                 <h4>by ${data.authorName}</h4>
                                 <a :href="'/pages/book?bookid=' + data._id + '&jwtToken={{@root.JWTTOKEN}}'">
-                                 <button name="" id=" book-content-dropdown" style="font-size: small;border:none;outline:none;background-color:rgb(8, 185, 8)">
-                                    details
+                                 <button name="" id=" book-content-dropdown" style="font-size: small;border:1px solid rgb(3, 77, 15) ;outline:none;background-color:rgb(8, 185, 8);color:white;padding:6px 12px">
+                                    Details
                                  </button>
                                     
                                 </a>
