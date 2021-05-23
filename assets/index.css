@@ -285,6 +285,8 @@ body {
 }
 .book-img {
   margin-top: 30px;
+  width: 200px;
+  object-fit: contain;
 }
 #book-content-dropdown {
   background-color: rgb(39, 151, 39);
