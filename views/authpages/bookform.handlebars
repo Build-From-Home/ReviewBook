@@ -15,7 +15,7 @@
         <div class="w3-container">
             <div class="book-form">
                 <h1>Add Book</h1>
-                <form action="{{#url}}pages/addbook{{/url}}?jwtToken={{@root.JWTTOKEN}}&user={{name}}&email={{email}}"
+                <form action="{{#url}}pages/addbook{{/url}}?jwtToken={{@root.JWTTOKEN}}&name={{name}}&email={{email}}"
                     method="POST" enctype="multipart/form-data">
                     <input type="text" required name="IBN" placeholder="IBN Number:">
                     <input type="text" required name="Title" placeholder="Book Title:">
