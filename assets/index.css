@@ -30,8 +30,7 @@ body {
 
 /* Add an active class to highlight the current page */
 .active {
-  background-color: #04aa6d;
-  color: white;
+  background-color: transparent !important;
 }
 
 /* Hide the link that should open and close the topnav on small screens */
@@ -128,10 +127,10 @@ body {
   outline: none;
   width: 300px;
 }
-#searchButton1{
+#searchButton1 {
   background-color: transparent;
-  Border:none;
-  Outline:none;
+  border: none;
+  outline: none;
 }
 
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
