@@ -1,8 +1,8 @@
-#This is a Nodejs Express-Handlebars application deployed in heroku [BooksReview🚀](https://bfhbookreview.herokuapp.com/)
+# This is a Nodejs Express-Handlebars application deployed in heroku [BooksReview🚀](https://bfhbookreview.herokuapp.com/)
 
 Alert-Images for the application will not  be rendered because it is not uploaded to cloud buckets(cause its paid)
 
-##Requirements
+## Requirements
 
 Install node js in your system by going to link:[Nodejs](https://nodejs.org/en/)
 
@@ -25,6 +25,6 @@ TEAM ID:BFH/recgX1joXIGWDJahm/2021
 
 TEAM MEMBER'S GITHUB ACCOUNT
 
-1.[Anand](https://github.com/anandalmanac)
-2.[Thusharprashant](https://github.com/Thusharprasanth)
-3.[Akash](https://github.com/akashmadhu4)
+  1. [Anand](https://github.com/anandalmanac)
+  2. [Thusharprashant](https://github.com/Thusharprasanth)
+  3. [Akash](https://github.com/akashmadhu4)
