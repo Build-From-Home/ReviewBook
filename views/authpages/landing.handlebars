@@ -5,11 +5,11 @@
 <!---navbar-->
 <div id="main">
     <div class="topnav" id="myTopnav">
-        <a href="/pages/landing" id="nav-logo"><img src="https://images.gr-assets.com/doodles/1619806753i/30.svg" height="20px"
-                alt="Logo"></a>
+        <a href="/pages/landing" id="nav-logo"><img src="https://images.gr-assets.com/doodles/1619806753i/30.svg"
+                height="20px" alt="Logo"></a>
         <a href="/landing">Home</a>
         <div class="dropdown" id="avatar">
-            
+
             <button class="dropbtn"><i id='avatar-icon' class="fas fa-user-circle"></i>
                 <i class="fa fa-caret-down"></i>
             </button>
@@ -83,22 +83,25 @@
                         <div class="book-details">
 
                             <div class="book-img">
-                                <img v-bind:src="data.coverImage" onerror="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT19lDKvZr_fHKFKs6g_VzKkm0VPoqfGk7GV9wR0mwdERms193A38KfSp-7q2rO9Ial6yA&usqp=CAU">
+                                <img v-bind:src="data.coverImage"
+                                    onerror="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT19lDKvZr_fHKFKs6g_VzKkm0VPoqfGk7GV9wR0mwdERms193A38KfSp-7q2rO9Ial6yA&usqp=CAU">
                             </div>
 
                             <div class="book-content">
                                 <h2>${data.bookTitle}</h2>
-                                
+
 
 
                                 <h4>by ${data.authorName}</h4>
-                                <a :href="'/pages/book?bookid=' + data._id + '&jwtToken={{@root.JWTTOKEN}}'">
-                                 <button name="" id=" book-content-dropdown" style="font-size: small;font-weight:normal !important;outline:none;border:none;background-color: rgb(39, 151, 39);color:white;padding:6px 12px">
-                                    Details
-                                 </button>
-                                    
+                                <a
+                                    :href="'/pages/book?bookid=' + data._id + '&jwtToken={{@root.JWTTOKEN}}&name={{name}}&email={{email}}'">
+                                    <button name="" id=" book-content-dropdown"
+                                        style="font-size: small;font-weight:normal !important;outline:none;border:none;background-color: rgb(39, 151, 39);color:white;padding:6px 12px">
+                                        Details
+                                    </button>
+
                                 </a>
-                               
+
                                 <div class="rate-it">
                                     <p>Rate it:</p>
                                     <ul class="rating">
@@ -192,7 +195,7 @@
             var content = $(this).html(); if (content.length > showChar) {
                 var c = content.substr(0, showChar);
                 var h = content.substr(showChar, content.length - showChar);
-               var html = c + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+                var html = c + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
 
                 $(this).html(html);
             }
@@ -248,7 +251,7 @@
                 const container = document.querySelectorAll('.rating')[num];
                 const items = container.querySelectorAll('.rating-item');
                 container.addEventListener('click', (e) => {
-                    
+
 
                     const eClass = e.target.classList;
                     items.forEach(
@@ -261,8 +264,8 @@
                         console.log(e.target.getAttribute("data-rate"));
                         this.starRating(e.target.getAttribute("data-rate"), id, name, email)
                         eClass.add("active");
-                        document.querySelector('.active').style.backgroundColor='transparent !important';
-                       
+                        document.querySelector('.active').style.backgroundColor = 'transparent !important';
+
                         console.log(document.querySelector('.active'));
                     }
                 });

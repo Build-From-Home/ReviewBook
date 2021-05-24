@@ -17,8 +17,8 @@ export const landingPage = router.get('/landing', authenticationMiddleware, (req
 })
 export const bookpage = router.get('/book', authenticationMiddleware, async (req, res) => {
   console.log("at book endpoint")
-  const { bookid } = req.query
-  console.log(bookid)
+  const { name, email, jwtToken, bookid } = req.query
+  res.locals.JWTTOKEN = jwtToken
   var booksData = {}
   await reviewModal.find({ bookid: bookid }, (err, reviews) => {
     if (reviews.length > 0) {
@@ -63,7 +63,7 @@ export const bookpage = router.get('/book', authenticationMiddleware, async (req
               if (book) {
                 booksData.book = book
                 console.log(booksData)
-                return res.render('authpages/book', { book: booksData.book, reviews: booksData.reviews })
+                return res.render('authpages/book', { book: booksData.book, reviews: booksData.reviews, name: name, email: email })
               }
               else {
                 console.log(err)

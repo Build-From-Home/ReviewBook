@@ -11,21 +11,21 @@
 
 
 <div class="topnav" id="myTopnav">
-    <a href="#home" id="nav-logo"><img src="https://images.gr-assets.com/doodles/1619806753i/30.svg" height="20px"
-            alt="Logo"></a>
-    <a href="#home">Home</a>
+    <a href="/pages/landing?jwtToken={{@root.JWTTOKEN}}&name={{name}}&email={{email}}" id="nav-logo"><img
+            src="https://images.gr-assets.com/doodles/1619806753i/30.svg" height="20px" alt="Logo"></a>
+    <a href="/pages/landing?jwtToken={{@root.JWTTOKEN}}&name={{name}}&email={{email}}">Home</a>
     <div class="dropdown" id="avatar">
         <button class="dropbtn"><i id='avatar-icon' class="fas fa-user-circle"></i>
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content" id="dropdown-content-avatar">
-            <a href="/pages/bookform"><button onclick="document.getElementById('id01').style.display='block'" class="add-btn"><i
-                        class="fas fa-plus"></i>Add Book</button></a>
+            <a href="/pages/bookform"><button onclick="document.getElementById('id01').style.display='block'"
+                    class="add-btn"><i class="fas fa-plus"></i>Add Book</button></a>
             <a href="/pages/guest">Logout</a>
 
         </div>
     </div>
-    
+
     <a href="/pages/bookform" class="res-nav"><button onclick="document.getElementById('id01').style.display='block'"
             class="w3-button w3-black">Add Book</button></a>
     <a href="/pages/guest" class="res-nav">Logout</a>
@@ -67,12 +67,13 @@
 
                 <div class="book-details">
 
-                    <div class="book-img" >
-                        
-                        <img src="{{book.coverImage}}" onerror="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT19lDKvZr_fHKFKs6g_VzKkm0VPoqfGk7GV9wR0mwdERms193A38KfSp-7q2rO9Ial6yA&usqp=CAU">
+                    <div class="book-img">
+
+                        <img src="{{book.coverImage}}"
+                            onerror="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT19lDKvZr_fHKFKs6g_VzKkm0VPoqfGk7GV9wR0mwdERms193A38KfSp-7q2rO9Ial6yA&usqp=CAU">
                         <div class="rate-it">
                             <p>Rate it:</p>
-                            
+
                             <ul class="rating">
                                 <li class="rating-item" data-rate="1"></li>
                                 <li class="rating-item " data-rate="2"></li>
@@ -86,18 +87,21 @@
                     <div class="book-content">
                         <h2>{{book.bookTitle}}</h2>
                         <h4>{{book.authorName}}</h4>
-                        
+
                         <div class="rated-wrapper">
                             <p>{{book.averageRating}}</p>
-                            <i style="color: rgb(255, 197, 6);font-size: 15px;margin-left: 6px;" class="fas fa-star"></i>
+                            <i style="color: rgb(255, 197, 6);font-size: 15px;margin-left: 6px;"
+                                class="fas fa-star"></i>
                         </div>
                         <p style="margin-top: 3px;padding-bottom:20px;border-bottom: 1px solid lightgray;" class="more">
                             {{book.description}}
                         </p>
                         <div class="book-links">
                             <h5>GET A COPY</h5>
-                            <a href="{{book.linkToAmazon}}"><button style="font-weight: normal !important;">Amazon IN</button></a>
-                            <a href="{{book.linkToFlipkart}}"><button style="font-weight: normal !important;">Flipkart</button></a>
+                            <a href="{{book.linkToAmazon}}"><button style="font-weight: normal !important;">Amazon
+                                    IN</button></a>
+                            <a href="{{book.linkToFlipkart}}"><button
+                                    style="font-weight: normal !important;">Flipkart</button></a>
 
                         </div>
                         <div class="book-details2">
@@ -123,7 +127,7 @@
                 <h5>COMMUNITY REVIEWS</h5>
                 {{#each reviews}}
                 <div class="comments">
-                    
+
                     <div class="review-wrapper">
 
                         <div class="rated-wrapper">

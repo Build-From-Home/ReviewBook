@@ -273,6 +273,24 @@
   }
 
   @media only screen and (max-width: 720px) {
+      /* The modal background */
+
+  .modal {
+    background-color: rgba(128, 128, 128, 0);
+  }
+
+  /* modal content box */
+  .modal-content {
+    background-color: rgb(255, 255, 255);
+    border: none;
+    width: 80%;
+  }
+  .modal-form form input {
+    width: 150px;
+    height: 30px;
+
+    border: none;
+  }
     .home-container {
       display: block;
     }
