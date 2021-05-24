@@ -56,7 +56,7 @@ export const bookApi = router.get('/booksapi', authenticationMiddleware, async (
 export const bookRating = router.post('/rating', authenticationMiddleware, async (req, res) => {
     console.log("reached bookrating endpoint")
     console.log(req.body)
-    reviewModal.findOne({ bookid:req.body.id, email: req.body.email }, (err, data) => {
+    reviewModal.findOne({ bookid: req.body.id, email: req.body.email }, (err, data) => {
         if (data) {
             data.starRating = req.body.rating,
                 data.save()
@@ -76,7 +76,7 @@ export const bookRating = router.post('/rating', authenticationMiddleware, async
 export const bookComment = router.post('/comment', authenticationMiddleware, async (req, res) => {
     console.log("reached book comment api")
     console.log(req.body)
-    reviewModal.findOne({ bookid:req.body.id,email: req.body.email }, (err, data) => {
+    reviewModal.findOne({ bookid: req.body.id, email: req.body.email }, (err, data) => {
         if (data) {
             data.comment = req.body.comment,
                 data.save()
@@ -94,7 +94,7 @@ export const bookComment = router.post('/comment', authenticationMiddleware, asy
     })
 })
 
-export const noAuthBooks = router.get('/noauthbooks', authenticationMiddleware, async (req, res) => {
+export const noAuthBooks = router.get('/noauthbooks', async (req, res) => {
     console.log(req.query.search)
     const regex = new RegExp(escapeRegex(req.query.search), 'gi');
     booksCollection.find({ $or: [{ bookTitle: regex }, { genre: regex }, { authorName: regex }, { language: regex }] }, (err, data) => {
