@@ -1,10 +1,10 @@
-#This is a Nodejs Express-Handlebars application deployed in heroku [Nodejs🚀](https://bfhbookreview.herokuapp.com/)
+#This is a Nodejs Express-Handlebars application deployed in heroku [BooksReview🚀](https://bfhbookreview.herokuapp.com/)
 
 Alert-Images for the application will not  be rendered because it is not uploaded to cloud buckets(cause its paid)
 
 ##Requirements
 
-Install node js in your system by going to link:[a link](https://nodejs.org/en/)
+Install node js in your system by going to link:[Nodejs](https://nodejs.org/en/)
 
 ## To start Development Environment
 
