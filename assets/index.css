@@ -422,6 +422,10 @@ body {
   display: none !important;
 }
 @media only screen and (max-width: 720px) {
+  .book-img img {
+    width: 140px;
+    object-fit: contain;
+  }
   .index {
     padding: 10px;
     min-height: 100vh;
