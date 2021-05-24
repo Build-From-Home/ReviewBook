@@ -282,8 +282,8 @@
 <script>
     console.log('{{{search}}}')
     console.log(app.booksData)
-    console.log(`http://localhost:8080/api/noauthbooks?search={{{search}}}`)
-    axios.get(`http://localhost:8080/api/noauthbooks?search={{{search}}}`).then((res) => {
+    console.log(`{{#url}}api/noauthbooks{{/url}}?search={{{search}}}`)
+    axios.get(`{{#url}}api/noauthbooks{{/url}}?search={{{search}}}`).then((res) => {
         app.booksData = res.data.booksData
     }).catch((err) => {
         console.log(err)
