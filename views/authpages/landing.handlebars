@@ -75,7 +75,7 @@
             <div class="updates">
                 <h4>UPDATES</h4>
                 <div v-for="(data,index) in booksData" class="content">
-                    <div v-on:mouseover="rating(index,data._id,name,email)">
+                    <div v-if="data" v-on:mouseover="rating(index,data._id,name,email)">
                         <p>Trending this week in one of your favorite genres,</p>
                         <a href="">${data.genre}</a>
 
@@ -117,9 +117,6 @@
                             </div>
 
                         </div>
-
-
-
                         <div class="comment-box">
                             <input id="InputID" type="text" v-model="comment[index]" placeholder="Add a review...">
                             <button v-on:click="submitcomment(data._id,index)">post</button>

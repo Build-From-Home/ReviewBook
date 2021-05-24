@@ -24,23 +24,4 @@ export const verifyJwtToken = function (token) {
         console.log("Jwt token invalid")
         return false;
     }
-
-    // try {
-    //     const jwtSessionToken = new JwtToken(jwt.verify(Buffer.from(token, "base64").toString(), process.env.JWTSECRET))
-    //     const currentTime = new Date().getTime() / 1000
-    //     if (jwtSessionToken.exp && jwtSessionToken.exp < currentTime) {
-    //         LOG.error("Jwt token valid but expired")
-    //         
-    //     }
-    //     if (jwtSessionToken.data) {
-    //         return jwtSessionToken.data
-    //     }
-    //     else {
-    //         console.log("Jwt token invalid")
-    //         return false;
-    //     }
-    // }
-    // catch (e) {
-    //     return false
-    // }
 }

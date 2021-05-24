@@ -143,7 +143,85 @@ export const addBook = router.post('/addbook', authenticationMiddleware, async (
     }
   })
 })
-
+export const noAuthBookpage = router.get('/noauthbook', async (req, res) => {
+  console.log("at book endpoint")
+  const { name, email, jwtToken, bookid } = req.query
+  res.locals.JWTTOKEN = jwtToken
+  var booksData = {}
+  await reviewModal.find({ bookid: bookid }, (err, reviews) => {
+    if (reviews.length > 0) {
+      console.log("reached here because of review collection")
+      booksData.reviews = reviews
+      //booksData.reviews = reviews.map(review => review.toJSON())
+      const starReviews = reviews.filter(review => review.starRating)
+      console.log(starReviews)
+      var sumOfRatings = 0
+      if (starReviews.length > 0) {
+        console.log("reached here because of starreviews in reviews collections")
+        starReviews.forEach((starReview) => {
+          sumOfRatings = sumOfRatings + starReview.starRating
+        })
+        console.log(sumOfRatings)
+        booksCollection.findById({ _id: mongoose.Types.ObjectId(bookid) }, (err, book) => {
+          if (book) {
+            book.averageRating = sumOfRatings / starReviews.length
+            booksCollection.findByIdAndUpdate({ _id: mongoose.Types.ObjectId(bookid) }, book, (err, book) => {
+              if (book) {
+                booksData.book = book
+                console.log("this is going to happen if ")
+                console.log(booksData)
+                return res.render('authpages/book', { book: booksData.book, reviews: booksData.reviews })
+              }
+              else {
+                console.log(err)
+              }
+            }).lean()
+          }
+          else {
+            console.log(err)
+          }
+        }).lean()
+      }
+      else {
+        console.log("reached here beacause of no star ratings in review collection")
+        booksCollection.findById({ _id: mongoose.Types.ObjectId(bookid) }, (err, book) => {
+          if (book) {
+            book.averageRating = 0;
+            booksCollection.findByIdAndUpdate({ _id: mongoose.Types.ObjectId(bookid) }, book, (err, book) => {
+              if (book) {
+                booksData.book = book
+                console.log(booksData)
+                return res.render('authpages/book', { book: booksData.book, reviews: booksData.reviews, name: name, email: email })
+              }
+              else {
+                console.log(err)
+              }
+            }).lean()
+          }
+          else {
+            console.log(err)
+          }
+        }).lean()
+      }
+    }
+    else {
+      console.log("reached this part because of no rating or comments")
+      console.log(err)
+      booksData.reviews = []
+      booksCollection.findById({ _id: mongoose.Types.ObjectId(bookid) }, (err, book) => {
+        if (book) {
+          booksData.book = book
+          console.log()
+          return res.render('authpages/book', { book: booksData.book, reviews: booksData.reviews })
+        }
+        else {
+          console.log(err);
+          return res.status(404).send('Internal server error')
+        }
+      }).lean()
+    }
+  }).lean()
+})
 
 
 
